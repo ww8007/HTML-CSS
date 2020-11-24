@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    padding: 0;
+    /* 이렇게 작성하면 디폴트 maring과 padding이 존재하지 않는다는 뜻 이다. */
+}
+
+.header {
+    /* css에는 기본 값이 존재 한다.
+    가로 세로 사이즈도 기본 값으로 존재 한다. default value */
+    width: auto;
+    height: auto;
+    background: white;
+    border-bottom: 1px solid lightgray;
+}
+
+.container {
+    width: 980px;
+    margin: auto;
+    /* margin : auto 일 경우 헤더 영역의 중앙으로 모이게 된다. */
+}
+
+.container-left {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+/* padding 값은 가장 효과를 볼 수 있는 곳에 넣어주는 것이 바람직하다. */
+
+.logo {
+    float: left;
+    margin-right: 5px;
+}
+
+
+/* 로고 밑 부분에 여백이 남는데 이는  */
+
+
+/* 밑 부분 띄어쓰기 하위 자식 요소 포함 모든 요소 img 테그 찾아냄 */
+
+.logo img {
+    display: block;
+}
+
+.menu {
+    float: left;
+}
+
+.menu-item {
+    float: left;
+    padding: 8px 10px;
+    /* padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 10px;
+    padding-left: 10px; */
+}
+
+
+/* 가상 요소 선택자 */
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/* 태그 선택자 */
