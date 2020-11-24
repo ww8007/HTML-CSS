@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- 정보 지칭 -->
+    <style>
+        /* 선택자를 통한 css 통합 사용 : embeded 방식*/
+        
+        div {
+            color: red;
+        }
+    </style>
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body> 구조 지칭
+    <div>
+        <!--Properties : css속성-->
+        <!-- atribute : html 속성 -->
+        <!-- 선택자의 종류, 속성 : 값 : 변수와 같이 생각 -->
+        <div style="color: rgb(255, 0, 0);">태그에직접 작성1</div>
+        <!--red-->
+        <!-- 선택자가 존재 하지 않음 : 바로 html에 테그에 직접 삽입하였기 때문에
+        선택자가 필요 하지 않다 (인라인 방식) 단점 : 테그를 찾아서 넣어줘야함 
+        반복성이 떨어짐  -->
+        color : red; 글자색 font-size : 20px; 크기 width : 300px; 너비 margin : 20px; 바깥 여백 padding : 10px 20px; 안쪽여백 position : absoulute;
+    </div>
+</body>
+
+</html>
+<!DOCTYPE htm2>
+<html lang="en">
+
+<head>
+    <!-- 외부에서 밑에와 같이 css 파일 불러옴으로인해 사용할 수 있다. -->
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

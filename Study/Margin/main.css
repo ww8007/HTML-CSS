@@ -1,0 +1,19 @@
+div {
+    color: red;
+    /* 이렇게 작성하면 외부에서 파일을 불러와서 사용할 수 있게된다. */
+    /* 이렇게 선언 하면 바로 글자 색상이 되고 */
+    background-color: red;
+}
+
+.title {
+    /*클래스 선택자*/
+    color: red;
+}
+
+.box {
+    width: 300px;
+    height: 200px;
+    background: red;
+    font-size: 16px;
+    color: black;
+}

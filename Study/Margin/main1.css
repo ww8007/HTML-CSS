@@ -1,0 +1,13 @@
+.box {
+    height: 300px;
+    width: 200px;
+    background: red;
+    margin: 10px;
+    /* 요소 바깥쪽 여백 */
+}
+
+.box2 {
+    /* 요소 안쪽 */
+    padding: 20px;
+    background: black;
+}
