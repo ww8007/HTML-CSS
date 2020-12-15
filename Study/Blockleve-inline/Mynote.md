@@ -26,10 +26,7 @@
     7. TEXT 작업용도
 ## 기본 html 개념
 ### css 호출 
-'''
 <link rel="stylesheet" href="./(호출할css)">
-'''
-
 ### 기본 css 개념
 1. hegith = 20px; 쓸 시 상하좌우 여백 남음
     -> margin : 0;
@@ -53,3 +50,6 @@
     * padding : 안쪽 여백
     - div  블록 : 상, 하, 좌, 우
     - span 인라인 : 좌, 우
+4. block 
+    인라인 요소   ->   block
+    block        ->   인라인 요소
