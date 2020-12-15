@@ -26,9 +26,8 @@
     7. TEXT 작업용도
 ## 기본 html 개념
 ### css 호출 
-'''
-<link rel="stylesheet" href="./(호출할css)">
-'''
+
+ <link rel="stylesheet" href="./(호출할css)">
 
 ### 기본 css 개념
 1. hegith = 20px; 쓸 시 상하좌우 여백 남음
