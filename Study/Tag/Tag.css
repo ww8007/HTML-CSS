@@ -1,0 +1,53 @@
+header {
+    background: tomato;
+    margin: 10px;
+    padding: 20px;
+}
+header nav {
+}
+header nav ul {
+    display: flex;
+}
+header nav ul li {
+    list-style: none;
+    margin: 10px;
+}
+main {
+    display: flex;
+}
+main section {
+    width: 70%;
+    background-color: tomato;
+    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+main section h1 {
+}
+/* article 독립성 보장 */
+article {
+    background-color: yellowgreen;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+article h2 {
+}
+article P {
+}
+aside {
+    width: 30%;
+    background-color: tomato;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+footer {
+    background-color: tomato;
+    margin: 10px;
+    padding: 20px;
+}
+footer address {
+}
+footer address a {
+    display: block;
+}
