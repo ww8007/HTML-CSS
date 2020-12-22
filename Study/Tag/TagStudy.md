@@ -105,7 +105,7 @@
 
 [사이트주소](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div)
 
-### <ol> <ul> <li>
+### ol ul li
     설명 : 각 항목 <li>의 정렬된 목록 <ol> 이나 정렬되지 않은 목록 <ul>을 설정
     ol : Ordered List
         1. 2. 3.
@@ -128,7 +128,7 @@
             i 로마 i
             I 로마 I
 
-### <dl> <dt> <dd>
+### dl dt dd
     설명 :  1. <dt> Definition Term
             용어
             2. <dd> Definition Details
@@ -142,14 +142,14 @@
     용어 목록은 ul ol 등을 사용하여서 정리
     dl dt dd는 목록의 한계성을 가짐
 
-### <p>
+### p
     설명 : 하나의 문단을 설정 (Paragraph)
     일반적 기기들 다음 문단 <p>로 넘어갈 수 있는 단축키 제공
     엔터를 이용한 줄바꿈은 적용되지 않음
     <br>테그를 이용
     p { display: block; }
 
-### <hr/>
+### hr
     *** 표현적 보다 의미적 ***
     설명 : 문단의 분리를 위해 설정 (Horizontal Rule)
     대부분 수평선의 경우로 표시, 표현적보다 의미적 관점으로 사용
@@ -158,7 +158,7 @@
         border-top: 2px dashed red;
     hr { display: block; }
 
-### <pre>
+### pre
     ***입력하는 서식 그대로 출력***
         -> 열리고 닫히는 부분까지 그대로 적용되기 때문에 붙여서 사용
     설명 : 서식이 미리 지정된 텍스트 설정(Preformatted Text)
@@ -177,7 +177,7 @@
 >
 ```
 
-### <blockquote>
+### blockquote
     설명 : 일반적인 인용문 (Block Quotation)
     길이가 긴 인용문에서 사용
     blockquote { display: block; }
