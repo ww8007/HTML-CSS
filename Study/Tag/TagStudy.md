@@ -188,14 +188,17 @@
 
     이렇게 pre와 다음 글자는 바로 붙어있어야 한다
 
-<body>   
-<pre>동해물과         백두산이 마르고 닳도록 
-하느님이 보우하사 우리나라 만세</pre>   
-</body>
+```html
+<pre>
+동해물과         백두산이 마르고 닳도록 
+하느님이 보우하사 우리나라 만세</pre
+>
+```
 
 ### <blockquote>
 
     설명 : 일반적인 인용문 (Block Quotation)
+    길이가 긴 인용문에서 사용
     blockquote { display: block; }
 
 [테그 보는 곳](https://www.w3schools.com/)
