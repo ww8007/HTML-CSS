@@ -1,0 +1,16 @@
+a {
+  font-weight: bold;
+  width: 100px;
+  line-height: 40px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 6px;
+  display: block;
+  text-align: center;
+  padding: 50px;
+  margin: 10px;
+  margin-bottom: 20px;
+}
+a:hover {
+  background-color: orange;
+}
