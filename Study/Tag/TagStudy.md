@@ -3,7 +3,6 @@
 ---
 
 ### header
-
     속성 : 전역
     설명 : 일반적으로 소개나 탐색에 사용
     사이트 가장 위
@@ -15,7 +14,6 @@
 [사이트 주소](https://developer.mozilla.org/ko/docs/Web/HTML/Element/header)
 
 ### footer
-
     속성 : 전역
     설명 : 작성자 구획, 저작권 데이터, 관련된 문서의 링크
     사이트 가장 아래
@@ -24,7 +22,6 @@
 [사이트주소](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer)
 
 ### h1~h6
-
     속성 :전역
     설명 : 6단계의 문서 제목 지정
     화면에는 크기가 지정되어있게 나와있지만 제목당의 크기는 별도로 지정해야 한다
@@ -41,11 +38,9 @@
 [사이트주소](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
 
 ### Labeling
-
     hearder footer 제목을 나누는 느낌이라 생각하면 됨
 
 ### main
-
     *** IE 사용 불가 ***
     속성 : 전역
     설명 : 페이지의 핵심 정보가 들어감
@@ -55,7 +50,6 @@
 [사이트주소](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main)
 
 ### article
-
     *** 독립성 ***
     속성 : 전역
     설명 : 독립적으로 구분되거나 재사용 가능한 영역을 설정
@@ -69,7 +63,6 @@
 [사이트주소](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article)
 
 ### section
-
     설명 : 문서의 일반적인 영역을 설정
         제목을 포함한다 -> h1 ~ h6
     div와의 차이점이라고 볼 수 있음
@@ -80,7 +73,6 @@
 [사이트주소](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section)
 
 ### aside
-
     설명 : 문서의 별도 콘텐츠를 설정
         광고, 기타 링크 -> 핵심 컨텐츠와는 별개되는 내용
     aside { display: block; }
@@ -88,7 +80,6 @@
 [사이트주소](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside)
 
 ### nav
-
     설명 : 다른 페이지 링크를 제공하는 영역
         메뉴, Home, About, Contact, 목차, 색인
     ol, ul과 엮어서 사용
@@ -98,7 +89,6 @@
 [사이트주소](https://www.w3schools.com/tags/tag_nav.asp)
 
 ### address
-
     설명 : body, article, footer 등에서 연락처 정보를 제공하기 위해 사용
     address { display: block; }
     href와 엮어서 사용
@@ -109,7 +99,6 @@
 [사이트주소](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address)
 
 ### div
-
     설명 : 본질적 아무것도 나타내지 않는 영역
         특별한 의미를 가지지 않음 -> 꾸미는 목적으로 사용
     div { display: block; }
@@ -117,7 +106,6 @@
 [사이트주소](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div)
 
 ### <ol> <ul> <li>
-
     설명 : 각 항목 <li>의 정렬된 목록 <ol> 이나 정렬되지 않은 목록 <ul>을 설정
     ol : Ordered List
         1. 2. 3.
@@ -141,13 +129,11 @@
             I 로마 I
 
 ### <dl> <dt> <dd>
-
-    설명 :
-        1. <dt> Definition Term
+    설명 :  1. <dt> Definition Term
             용어
-        2. <dd> Definition Details
+            2. <dd> Definition Details
             정의, 설명
-        3. <dl>  Description List
+            3. <dl>  Description List
             영역 묶음
     <dl>은 <dd>, <dt>만을 포함해야 함
     # python dic 같은 개념으로 생각
@@ -157,7 +143,6 @@
     dl dt dd는 목록의 한계성을 가짐
 
 ### <p>
-
     설명 : 하나의 문단을 설정 (Paragraph)
     일반적 기기들 다음 문단 <p>로 넘어갈 수 있는 단축키 제공
     엔터를 이용한 줄바꿈은 적용되지 않음
@@ -165,7 +150,6 @@
     p { display: block; }
 
 ### <hr/>
-
     *** 표현적 보다 의미적 ***
     설명 : 문단의 분리를 위해 설정 (Horizontal Rule)
     대부분 수평선의 경우로 표시, 표현적보다 의미적 관점으로 사용
@@ -175,7 +159,6 @@
     hr { display: block; }
 
 ### <pre>
-
     ***입력하는 서식 그대로 출력***
         -> 열리고 닫히는 부분까지 그대로 적용되기 때문에 붙여서 사용
     설명 : 서식이 미리 지정된 텍스트 설정(Preformatted Text)
@@ -185,7 +168,6 @@
     pre { display: block; }
 
 #### 예시
-
     이렇게 pre와 다음 글자는 바로 붙어있어야 한다
 
 ```html
@@ -196,9 +178,11 @@
 ```
 
 ### <blockquote>
-
     설명 : 일반적인 인용문 (Block Quotation)
     길이가 긴 인용문에서 사용
     blockquote { display: block; }
+
+
+
 
 [테그 보는 곳](https://www.w3schools.com/)
