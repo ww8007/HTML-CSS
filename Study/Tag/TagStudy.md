@@ -153,5 +153,49 @@
     # python dic 같은 개념으로 생각
     key = value
     dl dt dd { display: block; }
+    용어 목록은 ul ol 등을 사용하여서 정리
+    dl dt dd는 목록의 한계성을 가짐
+
+### <p>
+
+    설명 : 하나의 문단을 설정 (Paragraph)
+    일반적 기기들 다음 문단 <p>로 넘어갈 수 있는 단축키 제공
+    엔터를 이용한 줄바꿈은 적용되지 않음
+    <br>테그를 이용
+    p { display: block; }
+
+### <hr/>
+
+    *** 표현적 보다 의미적 ***
+    설명 : 문단의 분리를 위해 설정 (Horizontal Rule)
+    대부분 수평선의 경우로 표시, 표현적보다 의미적 관점으로 사용
+    예시 사용(수평선 설정)
+        border: none;
+        border-top: 2px dashed red;
+    hr { display: block; }
+
+### <pre>
+
+    ***입력하는 서식 그대로 출력***
+        -> 열리고 닫히는 부분까지 그대로 적용되기 때문에 붙여서 사용
+    설명 : 서식이 미리 지정된 텍스트 설정(Preformatted Text)
+    텍스트의 공백과 줄바꿈을 유지하여 표시가능
+    글자간의 [사이] 띄어쓰기 [거리]
+    기본 틀 : Monospace 글꼴(기본 코딩 프로그램)
+    pre { display: block; }
+
+#### 예시
+
+    이렇게 pre와 다음 글자는 바로 붙어있어야 한다
+
+<body>   
+<pre>동해물과         백두산이 마르고 닳도록 
+하느님이 보우하사 우리나라 만세</pre>   
+</body>
+
+### <blockquote>
+
+    설명 : 일반적인 인용문 (Block Quotation)
+    blockquote { display: block; }
 
 [테그 보는 곳](https://www.w3schools.com/)
