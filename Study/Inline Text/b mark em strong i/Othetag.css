@@ -1,0 +1,8 @@
+b {
+  font-weight: normal;
+  /* bold체를 노멀로 */
+}
+em {
+  /* em tag는 표시적으로 strong tag과 혼용 쉽기에 색차이 둠 */
+  color: brown;
+}
