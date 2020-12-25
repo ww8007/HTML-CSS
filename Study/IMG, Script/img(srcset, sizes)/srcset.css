@@ -1,0 +1,22 @@
+.some-image {
+  width: 400px;
+  height: 400px;
+  background-image: url("images/heropy_small.png");
+  background-repeat: no-repeat;
+}
+@media (min-width: 401px) {
+  .some-image {
+    width: 700px;
+    height: 700px;
+    background-image: url("images/heropy_medium.png");
+  }
+}
+@media (min-width: 701px) {
+  .some-image {
+    width: 1000px;
+    height: 1000px;
+    background-image: url("images/heropy_large.png");
+  }
+}
+
+/* 이렇게 css를 통한 수정도 가능함 */
