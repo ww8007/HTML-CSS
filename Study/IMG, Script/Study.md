@@ -48,3 +48,155 @@
         설명 : 서버측 이미지 맵으로 지정해 클릭하여 좌표를 쿼리스트링으로 서버에 전송할지 여부
         값    : bool
         특징  : <img />가 유요한 href 속성을 가진 <a>의 하위 요소인 경우에만 적용
+
+### audio
+
+    설명 : 소리 콘텐츠(MP3)를 삽입
+    html 만으로는 몇초부터 재생이나 세부적인 속성은 수정 불가
+        -> js를 통한 제어
+    auto play
+        설명    : 준비되면 바로 재생
+        값      : bool
+    controls
+        설명    : 제어 메뉴를 표시
+        값      : bool
+    loop
+        설명    : 재생이 끝나면 다시 처음부터 재생
+        값      : bool
+    preload
+        설명    : 페이지가 로드될 때 파일을 로드할지의 지정(힌트제공)
+        값      : 1. none(로드 x)
+                  2. metadata(metadata만 로드)
+                    사용자가 설정 하지 않아도 preload
+                  3. auto(전체 로드)
+    src
+        설명    : 콘텐츠 URL
+        값      : URL
+    muted
+        설명    : 음소거 여부
+        값      : bool
+
+### video
+
+    설명 : 동영상 콘텐츠(mp4)
+
+    auto play
+        설명    : 준비되면 바로 재생
+        값      : bool
+    controls
+        설명    : 기본 설정 제어메뉴
+        값      : bool
+    crossorigin
+        설명    : 가져오기가 외부에서 인지 판단
+        값      : anonymous, use-credentials
+    loop
+        설명    : 재생이 끝나면 다시 처음부터(무한루프)
+        값      : bool
+    poster
+        설명    : 동영상 썸네일 이미지 URL
+        값      : URL
+    preload
+        설명    : 페이지가 로드될 때 파일을 로드할지의 지정(힌트제공)
+        값      : 1. none(로드 x)
+                  2. metadata(metadata만 로드)
+                    사용자가 설정 하지 않아도 preload
+                  3. auto(전체 로드)
+    src
+        설명    : 콘텐츠 URL
+    width
+        설명    : 가로너비
+    height
+        설명    : 세로너비
+
+### figure, figcaption
+
+    figure
+        설명 : 이미지나 삽화, 도표 등의 영역을 설정
+    figcaption
+        설명 : figure에 포함되어 있는 이미지나 삽화 등의 설명을 표시
+
+    figure로 감싸고 figcaption으로 설명
+
+```html
+<figure>
+  <img src="/images/heropy.png" alt="HEROPY" />
+  <figcaption>HEROPY 이미지 입니다!</figcaption>
+</figure>
+```
+
+### iframe
+
+    설명 : 다른 HTML 페이지를 현재 페이지에 삽입
+    1. name
+        설명    : 프레임의 이름
+    2. src
+        설명    : 포함할 문서의 URL
+        값      : URL
+    3. width
+        설명    : 프레임 가로 너비
+    4. heith
+        설명    : 프레임 세로 너비
+    5. allowfullscreen
+        설명    : 전체 화면 모드 사용 여부
+        값      : bool
+    6. frameborder
+        설명    : 프레임 테두리 사용 여부
+        값      : 0,1
+        기본값  : 1
+    7. sandbox
+        설명    : 보안을 위한 읽기 전용으로 삽입
+        값      : 1. bool
+                  2. allow-form        : 양식제출 가능
+                  3. allow-scripts     : 스크립트 실행 가능
+                  4. allow-same-origin : 같은 출처(도메인)의 리소스 사용 가능
+        보안성으로는 높아질 수 있지만 js 코드가 동작 안하거나 페이지 문제가 생길 수 있음
+    페이지 연결거부 뜨면 아래와 같은 코드로 작성
+
+```html
+<div class="video-container" style="text-align: center; margin-top: 25px;>
+
+<object
+  type="text/html"
+  width="100%"
+  height="500"
+  data="//www.youtube.com/embed/k9_XH1YibcY"
+></object>
+```
+
+### canvs
+
+    *** 영역 만을 설정하는 것이지 그리는 것은 js를 활용 ***
+    설명 : Canvas API , WebGL API 사용 하여 그래픽이나 애니메이션 랜더링(범위)
+    1. width
+        설명 : 캔버스의 가로 너비
+    2. height
+        설명 : 캔버스의 세로 너비
+
+### script
+
+    설명 : 스크립트 코드를 문서에 포함하거나 참조(외부 스크립트)
+
+    1. async
+        설명    :   스크립트의 비동기적 실행 여부
+        값      :   bool
+    2. async
+        설명    :   변도의 도메인을 사용하는 사이트(CORS)의 오류 로깅을     허용하기 위해 사용
+        값      :   anonymous, use-credentials
+    3. deffer
+        설명    :   문서 파싱(구문 분석)후 작동 여부
+        값      :   bool
+        html 모든 내용 파싱 한뒤 실행
+        실무에서는 deffer를 사용 한뒤 전체 파싱 한뒤 사용하거나
+        script를 script가 필요한 구문 밑에 사용하기도 한다.
+    4. src
+        설명    :   참조할 외부 스크립트 URL
+        값      :   URL
+        src를 이용한 외부 스크립트 참조하면
+        console log의 구문은 무시 됨
+    5. type
+        설명    : MIME 타입
+
+### noscript
+
+    설명 : 스크립트를 지원하지 않는 경우에 삽입할 HTML 정의
+    sandbox를 통해 자바 스크립트를 지원하지 않는 환경 구현 가능
