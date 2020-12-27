@@ -127,10 +127,34 @@ tfoot {
 | novalidate   | 서버로 전송시 양식 데이터의 유효성을 검사하지 않도록 지정         |           |        |
 | target       | 서버로 전송 후 응답받을 방식을 지정                               |           |        |
 
-1. action : 서버 쪽 URL
-2. autocomplete : 자동완성 기능
-3. method : GET(보안성 저하 주소부분에 노출), POST(보안성이 높아짐)
+-  action : 서버 쪽 URL
+-  autocomplete : 자동완성 기능
+-  method : GET(보안성 저하 주소부분에 노출), POST(보안성이 높아짐)
    POST 방식을 사용하면 주소 부분에는 사용자 정보가 보이지는 않지만 결국 Form Data 부분에 노출이 됨 -> 완벽히 숨길 수 없음(암호화 해서 전송)
-4. name : 이름
-5. novalidate : 유효성 검사 제거(test) : bool 방식
-6. target : a 테그와 비슷하게 self(현재), blank(새로) 띄울지 설정
+-  name : 이름
+-  novalidate : 유효성 검사 제거(test) : bool 방식
+-  target : a 테그와 비슷하게 self(현재), blank(새로) 띄울지 설정
+
+![image](https://user-images.githubusercontent.com/54137044/103165358-000c6180-485a-11eb-81fe-ff9cb6488907.png)
+
+### input
+
+|속성|의미|값|기본값|특징|
+|autocomplete|사용자가 이전에 입력한 값으로 자동 완성 기능을 사용할 것인지 여부|on, off|on| |
+|autofocus|페이지가 로드될 때 자동으로 포커스|bool| |문서 내 고유해야 함|
+|checked|양식이 선택되었음을 표시|bool| |type 속성 값이 radio, checkbox 경우 일때만 적용|
+|disabled|양식을 비활성화|bool| | |
+|form| &#60;form &#62;의 id 속성 값| | 해당 &#60;form &#62;의 후손이 아닐 경우만|
+|list|참조할 &#60;datalist &#62;의 id 속성 값| | |
+|max|지정 가능한 최대 값| 숫자(Number)| |type 속성 값이 number 일 경우만, min 속성보다 큰 값만 허용|
+|min|지정 가능한 최소 값|숫자(Nuber)| |type 속성 값이 number 일 경우만, max 속성보다 작은 값만 허용|
+|maxlength|입력 가능한 최대 문자 수|숫자|Number|524288|type 속성 값이 ext, email, password, tel, URL일 경우만 사용|
+|muliple|둘 이상의 값을 입력 할 수 있는지 여부|bool| |type 속성 값이 email, file일 경우만, email 일 경우 ,로 구분|
+|name|양식의 이름| | | |
+|placeholder|사용자가 입력할 값의 힌트| | |type 속성 값이 text, search, tel, ulr, email일 경우만|
+|readonly|수정 불가한 읽기 전용|bool| | |
+
+-  autocomplete : 자동완성 기능 on, off
+-  autofocus : 하나 밖에 사용 못함
+-  checked : radio, checkbox만 적용
+-
