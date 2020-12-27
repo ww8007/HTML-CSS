@@ -11,14 +11,14 @@
 
 ```css
 table {
-    display: table;
+   display: table;
 }
 tr {
-    display: table-raw;
+   display: table-raw;
 }
 th,
 td {
-    display: table-cell;
+   display: table-cell;
 }
 ```
 
@@ -35,7 +35,7 @@ td {
 | scope      | 자신이 누구의 '머리글 칸'인지 명시           | col : 자신의 열<br/> colgroup : 모든 열 <br/> row : 자신의 행 <br/> rowgroup : 모든 행 |
 | <br/> auto | auto                                         |
 
-[capture]![image](https://user-images.githubusercontent.com/54137044/103164529-e403c280-484f-11eb-9362-63ed1acb69d5.png)
+![image](https://user-images.githubusercontent.com/54137044/103164529-e403c280-484f-11eb-9362-63ed1acb69d5.png)
 
 ### td tag
 
@@ -53,13 +53,84 @@ td {
 
 설명 : 표의 제목을 설정
 
--   열리는 TABLE 태그 바로 다음에 작성해야 함
--   table 하나 당 하나의 caption만 사용 가능
+-  열리는 TABLE 태그 바로 다음에 작성해야 함
+-  table 하나 당 하나의 caption만 사용 가능
 
 ```css
 caption {
-    display: table-caption;
+   display: table-caption;
 }
 ```
 
-[capture]![image](https://user-images.githubusercontent.com/54137044/103164629-211c8480-4851-11eb-8351-fe2a1dafba46.png)
+![image](https://user-images.githubusercontent.com/54137044/103164629-211c8480-4851-11eb-8351-fe2a1dafba46.png)
+
+### colgroup, col
+
+설명 : 표의 열들을 공통적으로 정의하는 컬럼(col)과 그의 집함(colgroup)
+(Column, Colum Group)
+
+| 속성 | 의미           | 값           | 기본값 |
+| ---- | -------------- | ------------ | ------ |
+| span | 연속되는 열 수 | 숫자(NUMBER) | 1      |
+
+col은 caption 위에 적으면 안됨(caption 밑)
+col을 이용하여 열 부분의 모든 속성을 제어 가능함
+col이 많아질 경우 span 속성 추가 하여 사용
+
+```css
+colgroup {
+   display: table-column-group;
+}
+col {
+   display: table-column;
+}
+```
+
+![image](https://user-images.githubusercontent.com/54137044/103164956-051ae200-4855-11eb-859f-a1403aee89d6.png)
+
+### thead, tbody, tfoot
+
+설명 : 표의 머리글(thead), 본문(tbody), 바닥글(tfoot)
+
+-  기본적으로 테이블의 레이아웃에 영향을 주지 않음
+
+형식적으로 나눠주기 위함
+
+```css
+thead {
+   display: table-header-group;
+}
+tbody {
+   display: table-row-group;
+}
+tfoot {
+   display: table-footer-group;
+}
+```
+
+![image](https://user-images.githubusercontent.com/54137044/103165001-8b372880-4855-11eb-8d86-b8bee804e450.png)
+
+## 양식
+
+### form
+
+설명 : 웹서버에 정보를 제출하기 위한 양식 범위를 정의
+
+-  from 이 다른 from의 자식 요소로 포함할 수 없음
+
+| 속성         | 의미                                                              | 값        | 기본값 |
+| ------------ | ----------------------------------------------------------------- | --------- | ------ |
+| action       | 전송할 정보를 처리할 웹페이지의 URL                               | URL       |        |
+| autocomplete | 사용자가 이전에 입력한 값으로 자동 완성 기능을 사용할 것인지 여부 | on, off   | on     |
+| method       | 서버로 전송할 HTTP 방식                                           | GET, POST | GET    |
+| name         | 고유한 양식의 이름                                                |           |        |
+| novalidate   | 서버로 전송시 양식 데이터의 유효성을 검사하지 않도록 지정         |           |        |
+| target       | 서버로 전송 후 응답받을 방식을 지정                               |           |        |
+
+1. action : 서버 쪽 URL
+2. autocomplete : 자동완성 기능
+3. method : GET(보안성 저하 주소부분에 노출), POST(보안성이 높아짐)
+   POST 방식을 사용하면 주소 부분에는 사용자 정보가 보이지는 않지만 결국 Form Data 부분에 노출이 됨 -> 완벽히 숨길 수 없음(암호화 해서 전송)
+4. name : 이름
+5. novalidate : 유효성 검사 제거(test) : bool 방식
+6. target : a 테그와 비슷하게 self(현재), blank(새로) 띄울지 설정
