@@ -154,8 +154,93 @@ tfoot {
 | name         | 양식의 이름                                                       |              |        |                                                              |
 | placeholder  | 사용자가 입력할 값의 힌트                                         |              |        | type 속성 값이 text, search, tel, ulr, email일 경우만        |
 | readonly     | 수정 불가한 읽기 전용                                             | bool         |        |                                                              |
+| step         | 유효한 증감 숫자의 간격                                           | 숫자(Nuber)  | 1      | type 속성 값이 number, range인 경우만 해당                   |
+| src          | 이미지의 URL                                                      | URL          |        | type 속성 값이 image 일 경우만                               |
+| alt          | 이미지의 대체 텍스트                                              |              |        | type 속성 값이 image 일 경우만                               |
+| type         | 입력 받을 데이터의 종류                                           | 별도 정리    | text   |                                                              |
+| value        | 양식의 초기 값                                                    |              |        |                                                              |
 
 -  autocomplete : 자동완성 기능 on, off
 -  autofocus : 하나 밖에 사용 못함
 -  checked : radio, checkbox만 적용
--
+-  form : form 테그 밖에서 form 양식을 사용 가능
+-  readonly, disabled
+   readonly는 focus는 가능
+   disabled는 focus조차 불가
+
+```html
+<body>
+   <form action="/login" id="login-form"></form>
+
+   <input type="text" form="login-form" />
+</body>
+```
+
+-  name : 양식의 이름
+-  type : 입력 받을 데이터의 종류
+
+#### type 입력 가능 데이터 값
+
+| 값       | 데이터종류                | 특징                                    |
+| -------- | ------------------------- | --------------------------------------- |
+| button   | 일반 버튼                 | &#60;button&#62;처럼 사용               |
+| checkbox | 체크박스                  |                                         |
+| color    | 색상                      | IE 지원 불가                            |
+| email    | 이메일                    |                                         |
+| file     | 파일                      |                                         |
+| hidden   | 보이지 않지만 전송할 양식 | value 속성으로 값을 지정                |
+| image    | 이미지 제출 버튼          | &#60;img /&#62;처럼 사용                |
+| number   | 숫자                      |                                         |
+| password | 비밀                      | 가려지는 양식                           |
+| radio    | 라디오 버튼               | 같은 name 속성 그룹 내 하나만 선택 가능 |
+| range    | 범위 컨트롤               | min, max, step, value(기본값)속성 사용  |
+| reset    | 초기화                    | 해당 &#60;form&#62; 범위 내 모든 양식   |
+| search   | 검색                      |                                         |
+| submit   | 제출 버튼                 | 해당&#60;form&#62; 범위 내 고유한 양식  |
+| tel      | 전화번호                  |                                         |
+| text     | 일반 텍스트               |                                         |
+| url      | 절대 URL                  |                                         |
+
+-  button , submit : 둘 다 동일하게 버튼 형식이지만 submit 을 써야 전송을 해줌
+-  input image를 사용해서 image 테그를 사용하지 않고도 이미지를 삽입하거나 링크로 작동하게 할 수 있음
+   ![image](https://user-images.githubusercontent.com/54137044/103201557-7af57b00-4933-11eb-8bf3-397210b89d5a.png)
+
+```html
+<body>
+   <input
+      type="number"
+      placeholder="숫자를 입력하세요!"
+      max="8"
+      min="1"
+      id="1"
+   />
+   <input type="number" step="4" id="2" />
+   <div>
+      체크박스
+      <input type="checkbox" checked id="3" />
+   </div>
+   <input type="file" multiple />
+   <form action="/login">
+      <input type="image" src="/20201227_142855.png" alt="my" />
+   </form>
+   <input type="radio" name="radio1" />
+   <input type="radio" name="radio1" checked />
+   <input type="radio" name="radio1" />
+   <input type="radio" name="radio1" />
+   <form action="/login">
+      <input type="text" name="id" />
+      <input type="password" name="pw" />
+      <input type="submit" value="로그인" />
+      <input type="reset" value="초기화" />
+   </form>
+   <input type="text" />
+</body>
+```
+
+![image](https://user-images.githubusercontent.com/54137044/103202674-6a92cf80-4936-11eb-8ace-7c0d724ef95c.png)
+
+```css
+input {
+   display: inline-block;
+}
+```
