@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <progress value="0" max="100"></progress>
+      <script>
+         const progress = document.querySelector("Progress");
+         const interval = setInterval(function () {
+            progress.value += 10;
+            if (progress.value >= 100) clearInterval(interval);
+         }, 1000);
+      </script>
+   </body>
+</html>
