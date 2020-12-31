@@ -56,7 +56,7 @@
    직렬 호출 방식 - 시간이 오래 걸림
 
 ```css
-@import url("./common2.css");
+@import url('./common2.css');
 ```
 
 ## 선택자(Selector)
@@ -290,3 +290,128 @@ transition : 에니메이션 효과
 
 설명 : E를 마우스로 클릭하는 동안에만 E 선택
 E: active
+
+3. FOCUS
+
+설명 : E가 포커스 된 동안에만 E 선택
+
+E: focus
+
+대화형 콘텐츠에서 사용 가능
+
+input은 border로 테두리가 들어간게 아니라
+outline을 통해 입력이 되어 있따.
+
+![image](https://user-images.githubusercontent.com/54137044/103394535-694ae800-4b6c-11eb-9f5e-31b3ad8ed534.png)
+
+4. FIRST CHILD , LAST CHILD
+   FIRST CHILD
+   설명 : E가 형제 요소 중 첫번째 요소라면 선택
+   LAST CHILD
+   설명 : 마지막 요소 선택
+   E:First-child
+   이벤트 -> JS
+
+-  hover, active, focus는 css에 특이하게 존재
+-  선택자 -> 이벤트와는 관련 없음
+-  모든 테그에 선택자를 설정하는 것은 비효율적
+   -> First-child를 활용하여 선택
+-  자식 요소까지 css 설정을 하고 싶은데 태그가 다르다면 태그명을 없애고
+   써주면 된다 -> .boxgroup : first_child
+
+![image](https://user-images.githubusercontent.com/54137044/103395684-bcc03480-4b72-11eb-9422-44d31c78e1ca.png)
+
+```css
+.fruits li:first-child {
+   color: red;
+}
+```
+
+```html
+<ul class="fruits">
+   <li>딸기</li>
+   <li>사과</li>
+   <li>오렌지</li>
+   <li>망고</li>
+</ul>
+```
+
+5. NTH CHILD
+
+설명 : E가 형제 요소 중 N번째 요소라면 선택
+(N 키워드 사용시 0부터 해석(Zeor-base))
+
+E:nth-child(n)
+
+-  nth-child(2n)
+   짝수번 째 요소들만 선택
+   2, 4
+-  nth-child(n+3)
+   1, 2번 제외 요소들 선택
+
+```css
+.fruits li:nth-child(2) {
+   color: red;
+}
+```
+
+```html
+<ul class="fruits">
+   <li>딸기</li>
+   <li>사과</li>
+   <!-- 선택 -->
+   <li>오렌지</li>
+   <li>망고</li>
+</ul>
+```
+
+혼동 가능 요소
+오른쪽에서 왼쪽으로 해석하는것이 더 명확하다
+
+```css
+.fruits p:nth-child(1) {
+   color: red;
+}
+/* 모든 요소 중 첫번 째 자식 요소를 찾고 이것이 p 테그인지 검사 */
+```
+
+```html
+<div class="fruits">
+   <div>딸기</div>
+   <p>사과</p>
+   <p>망고</p>
+   <span>오렌지</span>
+</div>
+<!-- 첫번 째 요소가 딸기 인데 div 테그이므로 아무것도 선택되지 않는다. -->
+```
+
+### NTH OF TYPE
+
+설명 : E의 타입(태그이름)과 동일한 타입인 형제 요소 중 E가 n번째 요소라면 선택
+(n 키워드 사용시 0부터 해석(Zero-base))
+
+E:nth-of-type(n)
+
+-  nth-of-type은 class와 같이 사용하면 오류가 생길 수 있다
+   태그를 찾는 용도로만 사용
+
+### 부정 선택자(Negation Selector)
+
+설명 : S가 아닌 E 선택
+
+-  하나의(여러개) 클래스만 제외하고 싶은 경우 사용 가능
+   E:not(S)
+
+![image](https://user-images.githubusercontent.com/54137044/103396134-b9c64380-4b74-11eb-96c2-fd30570b4317.png)
+
+## 가상 요소 선택자(Pseudo-Elements Selectors)
+
+-  content 속성이 매우 중요
+
+### BEFORE
+
+설명 : E 요소 내부의 앞에, 내용 삽입
+
+-  가상클래스는 콜론이 두개 붙음
+
+E::before

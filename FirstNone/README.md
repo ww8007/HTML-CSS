@@ -78,3 +78,24 @@ HTML의 띄어쓰기는 한 번만 인식이 되도록 되어 있음
    <h1>&lt;div&gt;&lt;/div&gt;</h1>
 </body>
 ```
+
+### html 빠르게 적기
+
+ul>li{숫자$}\*20
+
+1부터 시작 숫자 $표시 (1~20)
+
+```html
+<ul>
+   <li>1</li>
+   <li>2</li>
+   <li>3</li>
+   <li>4</li>
+   <li>5</li>
+   <li>6</li>
+   <li>7</li>
+   <li>8</li>
+   <li>9</li>
+   <li>10</li>
+</ul>
+```
