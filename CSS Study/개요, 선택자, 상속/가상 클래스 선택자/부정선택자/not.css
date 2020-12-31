@@ -1,0 +1,7 @@
+.fruits {
+    font-size: 40px;
+}
+
+.fruits li:not(.str) {
+    color: red;
+}
