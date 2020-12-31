@@ -1,0 +1,13 @@
+a:hover {
+   font-weight: bold;
+   font-size: 40px;
+}
+.box {
+   width: 100px;
+   height: 100px;
+   background: tomato;
+   transition: 0.4s;
+}
+.box:hover {
+   width: 200px;
+}
