@@ -407,6 +407,10 @@ E:nth-of-type(n)
 ## 가상 요소 선택자(Pseudo-Elements Selectors)
 
 -  content 속성이 매우 중요
+   content 선언 안할 시 내용 표시 안됨
+
+*  가상 요소 선태가 앞에 콜론이 하나 있는 경우도 존재하는데
+   클래스 선택자(콜론 하나)와 혼동하지 않기 위해서 콜론을 두개 써주는 편이 좋다
 
 ### BEFORE
 
@@ -415,3 +419,75 @@ E:nth-of-type(n)
 -  가상클래스는 콜론이 두개 붙음
 
 E::before
+
+### AFTER
+
+설명 : E 요소 내부의 두에, 내용 삽입
+
+E::after
+아래와 같이 이미지 파일도 삽입 가능
+content: url()
+
+```css{
+ul li::after {
+    content: url(./KakaoTalk_20201218_204801036.jpg);
+}
+```
+
+![image](https://user-images.githubusercontent.com/54137044/103397074-ee88c980-4b79-11eb-8947-e51343360135.png)
+
+## 속성 선택자
+
+html -> div class = ""
+css -> color : red;
+
+-  css 속성 property
+
+### ATTR
+
+설명 : 속성 attr을 포함한 요소 선택
+
+&#91;attr&#93;
+
+-  개발자의 고충으로 변수나 클래스 이름을 선택하는게 문제가 되는 경우가 많다
+-  이를 완화 하기 위해서 [선택속성]으로 해결할 수 있다.
+
+[example]
+![image](https://user-images.githubusercontent.com/54137044/103397418-a9659700-4b7b-11eb-81a2-fe9b3f476a51.png)
+
+### ATTR=VALUE
+
+설명 : 속성 attr을 포함하며 속성 값이 value인 요소 선택
+
+&#91;attr=value&#93;
+
+attr=value에서 value의 큰 따옴표는 생략 가능
+
+```html
+<body>
+   <input type="text" value="Jang" />
+   <input type="password" value="1234" />
+   <input type="text" value="disabled text" disabled />
+</body>
+```
+
+```css
+[type='password'] {
+   opacity: 0.5;
+   color: red;
+}
+```
+
+[example]
+![image](https://user-images.githubusercontent.com/54137044/103397633-84bdef00-4b7c-11eb-8ebd-1c60aff8d4f4.png)
+
+### ATTR^=VALUE
+
+설명 : 속성 attr을 포함하며 속성 값이 value로 시작하는 요소 선택
+
+&#91;attr^=value&#93;
+
+-  전체 class 명을 적지 않아도 하위로 찾기 가능
+
+[example]
+![image](https://user-images.githubusercontent.com/54137044/103397908-a4a1e280-4b7d-11eb-941e-f5464787b49b.png)
