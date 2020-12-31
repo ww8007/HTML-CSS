@@ -1,0 +1,12 @@
+[class^="btn-"] {
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+[class$=success] {
+    color: green;
+}
+
+[class$=danger] {
+    color: red;
+}
