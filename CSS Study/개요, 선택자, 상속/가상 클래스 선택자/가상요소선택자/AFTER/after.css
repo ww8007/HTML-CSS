@@ -1,0 +1,7 @@
+ul {
+    font-size: 400px;
+}
+
+ul li::after {
+    content: url(./KakaoTalk_20201218_204801036.jpg);
+}
