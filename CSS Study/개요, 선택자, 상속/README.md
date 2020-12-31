@@ -301,7 +301,7 @@ E: focus
 
 input은 border로 테두리가 들어간게 아니라
 outline을 통해 입력이 되어 있따.
-
+[example]<br>
 ![image](https://user-images.githubusercontent.com/54137044/103394535-694ae800-4b6c-11eb-9f5e-31b3ad8ed534.png)
 
 4. FIRST CHILD , LAST CHILD
@@ -318,8 +318,8 @@ outline을 통해 입력이 되어 있따.
    -> First-child를 활용하여 선택
 -  자식 요소까지 css 설정을 하고 싶은데 태그가 다르다면 태그명을 없애고
    써주면 된다 -> .boxgroup : first_child
-
-![image](https://user-images.githubusercontent.com/54137044/103395684-bcc03480-4b72-11eb-9422-44d31c78e1ca.png)
+   [example]<br>
+   ![image](https://user-images.githubusercontent.com/54137044/103395684-bcc03480-4b72-11eb-9422-44d31c78e1ca.png)
 
 ```css
 .fruits li:first-child {
@@ -401,8 +401,8 @@ E:nth-of-type(n)
 
 -  하나의(여러개) 클래스만 제외하고 싶은 경우 사용 가능
    E:not(S)
-
-![image](https://user-images.githubusercontent.com/54137044/103396134-b9c64380-4b74-11eb-96c2-fd30570b4317.png)
+   [example]<br>
+   ![image](https://user-images.githubusercontent.com/54137044/103396134-b9c64380-4b74-11eb-96c2-fd30570b4317.png)
 
 ## 가상 요소 선택자(Pseudo-Elements Selectors)
 
@@ -434,6 +434,7 @@ ul li::after {
 }
 ```
 
+[example]<br>
 ![image](https://user-images.githubusercontent.com/54137044/103397074-ee88c980-4b79-11eb-8947-e51343360135.png)
 
 ## 속성 선택자
@@ -452,7 +453,7 @@ css -> color : red;
 -  개발자의 고충으로 변수나 클래스 이름을 선택하는게 문제가 되는 경우가 많다
 -  이를 완화 하기 위해서 [선택속성]으로 해결할 수 있다.
 
-[example]
+[example]<br>
 ![image](https://user-images.githubusercontent.com/54137044/103397418-a9659700-4b7b-11eb-81a2-fe9b3f476a51.png)
 
 ### ATTR=VALUE
@@ -478,7 +479,7 @@ attr=value에서 value의 큰 따옴표는 생략 가능
 }
 ```
 
-[example]
+[example]<br>
 ![image](https://user-images.githubusercontent.com/54137044/103397633-84bdef00-4b7c-11eb-8ebd-1c60aff8d4f4.png)
 
 ### ATTR^=VALUE
@@ -489,5 +490,12 @@ attr=value에서 value의 큰 따옴표는 생략 가능
 
 -  전체 class 명을 적지 않아도 하위로 찾기 가능
 
-[example]
+[example]<br>
 ![image](https://user-images.githubusercontent.com/54137044/103397908-a4a1e280-4b7d-11eb-941e-f5464787b49b.png)
+
+### ATTR$=VALUE
+
+설명 : attr을 포함하며 속성 값이 value로 끝나는 요소 선택
+
+[example]<br>
+![image](https://user-images.githubusercontent.com/54137044/103398205-01ea6380-4b7f-11eb-82db-6225f9be854c.png)
