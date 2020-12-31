@@ -1,0 +1,11 @@
+.fruits {
+    font-size: 40px;
+}
+
+.fruits p:nth-of-type(1) {
+    color: red;
+}
+
+.fruits .red:nth-of-type(1) {
+    color: red;
+}
