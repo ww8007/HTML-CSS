@@ -1,0 +1,12 @@
+.container {
+   width: 500px;
+   height: 300px;
+   border: 4px solid tomato;
+   margin: 20px;
+}
+.child {
+   max-width: 400px;
+   min-height: 200px;
+   height: 200px;
+   background: orange;
+}
