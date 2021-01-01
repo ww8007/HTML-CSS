@@ -347,7 +347,7 @@ div {
 ```
 
 [example]<br>
-![image](https://user-images.githubusercontent.com/54137044/103433541-f6a63f00-4c35-11eb-98ba-f52e985bdd92.png)
+![image](https://user-images.githubusercontent.com/54137044/103433783-bbf2d580-4c3a-11eb-9e0a-756067ea47b6.png)
 
 #### border&#45;color
 
@@ -383,3 +383,94 @@ div {
 | border-right-width  | 오른쪽 선의 두께 | 두께           |
 | border-right-style  | 오른쪽 선의 종류 | 종류           |
 | border-right-color  | 오른쪽 선의 색상 | 색상           |
+
+설명 : 요소의 크기 계산 기준을 지정
+
+- 주의사항
+  border 도 동일하게 두꼐이므로 padding, margin과 동일하게 크기에 영향을 끼침
+  -> box-sizing : border-box; 추가 함으로써 해결
+
+```css
+.box {
+  box-sizing: border-box;
+}
+```
+
+[example]<br>
+![image](https://user-images.githubusercontent.com/54137044/103434056-2279f280-4c3f-11eb-8032-59bbdaff362c.png)
+
+### box&#45;sizing
+
+| 값          | 의미                                                                                       | 기본값      |
+| ----------- | ------------------------------------------------------------------------------------------ | ----------- |
+| content-box | 너비(width, height)만으로 요소의 크기를 계산                                               | content-box |
+| border-box  | 너비(width, height)에 안쪽 여백(padding)과 테두리 선(border)를 포함하여 요소의 크기를 계산 |             |
+
+### display
+
+설명 : 요소의 박스타입(유형)을 설정
+
+| 값     | 의미                                   | 기본값 |
+| ------ | -------------------------------------- | ------ |
+| block  | 블록 요소( &#60;div&#60; 등)           |        |
+| inline | 인라인 요소(&#60;span&#62;등)          |        |
+| inline | 인라인-블록 요소(&#60;input&#62; 등)   |        |
+| 기타   | table,table-cell,flex 등               |        |
+| none   | 요소의 박스 타입이 없음(요소가 사라짐) |        |
+
+- inline-block
+  기본 요소는 inline 이지만 inline이 가지지 못하는 가로 세로 값을 가지도록 함
+- none 화면에서 사라지게 함
+  존재하지 않도록 함
+  -> opacity = 0;와는 다른 개념
+
+[example]
+![image](https://user-images.githubusercontent.com/54137044/103434200-450d0b00-4c41-11eb-8001-e771f8058c10.png)
+
+- display : none
+
+[normal]<br>
+![image](https://user-images.githubusercontent.com/54137044/103434284-8651ea80-4c42-11eb-8ba4-24b31fa47230.png)
+<br>
+[none]<br>
+![image](https://user-images.githubusercontent.com/54137044/103434356-b8b01780-4c43-11eb-9993-eaf05da41bbc.png)
+
+### overflow
+
+설명 : 요소의 크기 이상으로 내용(자식요소)이 넘쳤을 때, 내용의 보여짐을 제어
+
+속성 값
+| 값 | 의미 | 기본값 |
+| ------ | --- | ------ |
+|visible|넘친 부분을 자르지 않고 그대로 보여줌|visible|
+|hidden|넘친 부분을 잘라내고, 보이지 않도록 함| |
+|scroll|넘친 부분을 잘래나고, 스크롤바를 이용하여 볼 수 있도록 함| |
+|atuo|넘친 부분이 있는 경우만 잘라내고, 스크롤바를 이용하여 볼 수 있도록 함| |
+
+- scroll - 강제로 스크롤 바 생성
+  [scroll]<br>
+  ![image](https://user-images.githubusercontent.com/54137044/103434482-3aed0b80-4c45-11eb-87e3-936e4a4aa5bd.png)
+
+- auto - 자동으로 스크롤 바 생성
+  [auto]<br>
+  ![image](https://user-images.githubusercontent.com/54137044/103434491-5821da00-4c45-11eb-93ff-e4c536ebbc55.png)
+
+### opacity
+
+설명 : 요소의 투명도를 지정
+
+속성 값
+
+| 값   | 의미                        | 기본값 |
+| ---- | --------------------------- | ------ |
+| 숫자 | 0 부터 1 사이의 소수점 숫자 | 1      |
+
+opacity : 투명도;
+
+- opacity와 display : none 차이는
+- opacity - 존재하지만 보이지 않음
+  [opacity0]<br>
+  ![image](https://user-images.githubusercontent.com/54137044/103434601-1abe4c00-4c47-11eb-8d22-669ee28f0acc.png)
+- display : none - 존재 자체를 소멸
+  [none]<br>
+  ![image](https://user-images.githubusercontent.com/54137044/103434586-f9f5f680-4c46-11eb-8d16-88f43e9748f7.png)
