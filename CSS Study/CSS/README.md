@@ -186,10 +186,11 @@ viewport height
 | auto | 브라우저가 너비를 계산              |        |
 | %    | 부모 요소의 너비에 대한 비율로 지정 |        |
 
-margin : 위 우 아래 좌;
-margin : 위 [좌, 우], 아래;
-margin : [위 아래], [좌, 우];
-margin : [위,아래, 좌, 우];
+-  위 에서 부터 시계 방향으로 해석
+   margin : 위 우 아래 좌;
+   margin : 위 [좌, 우], 아래;
+   margin : [위 아래], [좌, 우];
+   margin : [위,아래, 좌, 우];
 
 #### 마진 중복(병합, Collapse)
 
@@ -200,3 +201,69 @@ margin : [위,아래, 좌, 우];
 3. 부모 요소의 margin-bottom과 자식 요소의 margin-bottom이 만났을 때
 
 -  마진중복은 버그가 아닌 현상을 우회 가능 또는 응용 가능
+
+*  옆쪽으로는 중복이 안됨
+*  위 아래의 margin은 중복됨
+*  자식 요소의 margin-top 과 부모 요소의 margin-top이 만나면 margin이 중복이 된다.
+
+[example]<br>
+![image](https://user-images.githubusercontent.com/54137044/103433085-3f59fa00-4c2e-11eb-926b-243d7c38eb2c.png)
+
+##### 마진 중복 계산법
+
+설명 : 마진 중복 현상이 발생시, 중복 값 계산 법
+
+| 조건             | 요소A 마진 | 요소 B 마진 | 계산법              | 중복값 |
+| ---------------- | ---------- | ----------- | ------------------- | ------ |
+| 둘 다 양수       | 30px       | 10px        | 더 큰 값으로 중복   | 30px   |
+| 둘 다 음수       | -30px      | -10px       | 더 작은 값으로 중복 | -30px  |
+| 각각 양수와 음수 | -30px      | 10px        | -30+10=-20          | -20px  |
+
+### padding
+
+설명 : 요소의 '내부(안) 여백'을 지정
+단축
+
+| 값   | 의미                                | 기본값 |
+| ---- | ----------------------------------- | ------ |
+| 단위 | px,em,cm 등 단위로 지정             | 0      |
+| %    | 부모 요소의 너비에 대한 비율로 지정 |        |
+
+-  위 에서 부터 시계 방향으로 해석
+   padding : 위 우 아래 좌;
+   padding : 위 [좌, 우], 아래;
+   padding : [위 아래], [좌, 우];
+   padding : [위,아래, 좌, 우];
+
+```css
+.box {
+   padding: 10px 20px 30px 40px;
+   padding: 10px 20px 40px;
+   padding: 10px 40px;
+   padding: 10px;
+}
+```
+
+-  단축 속성과 개별 속성 존재
+
+### padding 크기 증가
+
+설명 : 추가된 padding 값 만큼 요소의 크기가 커지는 현상
+
+-  자동 계산
+   너비와 높이는 100으로 하면서 padding도 넣겠다
+   content-box 내장하고 있음
+   box-sizing: border-box; 추가
+
+```css
+div {
+   width: 100px;
+   height: 100px;
+   background: tomato;
+   padding: 10px 20px;
+   box-sizing: border-box;
+}
+```
+
+[example]<br>
+![image](https://user-images.githubusercontent.com/54137044/103433178-16d2ff80-4c30-11eb-9eb4-556f6c0b292b.png)

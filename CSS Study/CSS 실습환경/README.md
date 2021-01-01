@@ -10,6 +10,13 @@
 [reset.css](https://www.jsdelivr.com/package/npm/reset-css)
 여기서 reset.min.css를 불러와서 사용하면 모든 스타일이 초기화가 된다
 
+```html
+<link
+   rel="stylesheet"
+   href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
+/>
+```
+
 ![image](https://user-images.githubusercontent.com/54137044/103399096-c94c8900-4b82-11eb-936a-9f6e1b5c13c2.png)
 
 ## codepen
