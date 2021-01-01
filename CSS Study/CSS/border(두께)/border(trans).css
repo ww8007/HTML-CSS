@@ -4,3 +4,11 @@
     background: orange;
     border: 10px inset transparent;
 }
+
+.box2 {
+    width: 100px;
+    height: 100px;
+    background: orange;
+    border: 10px solid black;
+    box-sizing: border-box;
+}
