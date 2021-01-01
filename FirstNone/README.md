@@ -10,7 +10,7 @@ img src="assets/images/xxx.jpg"
 ../(밖으로 나가는 행위)
 background:url("../assets/images/xxx.jpg");
 
--  경로가 달라질 수 있음 -> 상대경로
+- 경로가 달라질 수 있음 -> 상대경로
 
 ## 절대 경로
 
@@ -19,8 +19,8 @@ img src="https://naver.com/assets/images/xxx.jpg"
 background:url("https://naver.com/assets/images/xxx.jpg");
 /(//)
 
--  경로가 어디서 호출하든 같음
--  만약 호출하려는 주소와 작업 주소가 같은 경우 /로 주소 생략 가능
+- 경로가 어디서 호출하든 같음
+- 만약 호출하려는 주소와 작업 주소가 같은 경우 /로 주소 생략 가능
 
 ### 주석
 
@@ -74,12 +74,12 @@ HTML의 띄어쓰기는 한 번만 인식이 되도록 되어 있음
 
 ```html
 <body>
-   Hello&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;world!
-   <h1>&lt;div&gt;&lt;/div&gt;</h1>
+  Hello&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;world!
+  <h1>&lt;div&gt;&lt;/div&gt;</h1>
 </body>
 ```
 
-### html 빠르게 적기
+### html 빠르게 적기(emmet 문법)
 
 ul>li{숫자$}\*20
 
@@ -87,15 +87,15 @@ ul>li{숫자$}\*20
 
 ```html
 <ul>
-   <li>1</li>
-   <li>2</li>
-   <li>3</li>
-   <li>4</li>
-   <li>5</li>
-   <li>6</li>
-   <li>7</li>
-   <li>8</li>
-   <li>9</li>
-   <li>10</li>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <li>6</li>
+  <li>7</li>
+  <li>8</li>
+  <li>9</li>
+  <li>10</li>
 </ul>
 ```
