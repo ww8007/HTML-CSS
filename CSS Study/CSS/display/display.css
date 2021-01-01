@@ -1,0 +1,39 @@
+span {
+    display: block;
+    width: 100px;
+    height: 100px;
+    background: tomato;
+}
+
+div {
+    display: block;
+    width: 100px;
+    height: 100px;
+    background: tomato;
+}
+
+input {
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+    margin: 50px 0;
+    padding: 20px 0;
+}
+
+input:nth-child(2) {
+    opacity: 0;
+    display: none;
+}
+
+div {
+    width: 200px;
+    height: 200px;
+    background: tomato;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.hide {
+    display: none;
+}
