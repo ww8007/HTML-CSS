@@ -1,0 +1,24 @@
+body {
+    font-size: 30px;
+}
+
+p {
+    font-size: 40px;
+    font-style: italic;
+}
+
+.serif {
+    font-family: serif;
+}
+
+.san-serif {
+    font-family: sans-serif;
+}
+
+.monospace {
+    font-family: monospace;
+}
+
+.cursive {
+    font-family: cursive;
+}
