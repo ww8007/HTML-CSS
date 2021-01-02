@@ -1,0 +1,16 @@
+.box {
+    width: 150px;
+    height: 100px;
+    background: tomato;
+    color: white;
+    font-size: 30px;
+    margin: 10px;
+    float: left;
+}
+
+.box4 {
+    width: 200px;
+    height: 150px;
+    background: orange;
+    clear: left;
+}
