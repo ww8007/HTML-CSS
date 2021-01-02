@@ -1,0 +1,24 @@
+div {
+    margin: 10px;
+    padding: 10px;
+}
+
+.Jang {
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.Jang1 {
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+.Jang2 {
+    font-size: 30px;
+    text-decoration: overline;
+}
+
+.Jang3 {
+    font-size: 30px;
+    text-decoration: line-through;
+}
