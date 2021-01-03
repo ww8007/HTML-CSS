@@ -1,0 +1,6 @@
+.box {
+    background-image: url(https://heropy.blog/css/images/vendor_icons/snowpack.png);
+    width: 500px;
+    height: 250px;
+    border: 2px dashed lightgray;
+}
