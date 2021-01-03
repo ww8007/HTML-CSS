@@ -1,0 +1,17 @@
+.box {
+    width: 100px;
+    height: 100px;
+    background: tomato;
+    border: 4px dashed red;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.relative {
+    position: relative;
+    left: 160px;
+    bottom: 40px;
+}
