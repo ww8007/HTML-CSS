@@ -792,7 +792,7 @@ float 속성이 적용된 요소의 주위로 다른 요소들이 이를 방지�
 3. 부모 요소에 clearfix 클래스 추가하여 하제(추천!)
 
 - clear를 통한 초기화를 꼭 해줘야 함
-
+- clear-fix가 존재하는 자식 요소들은 float이 무조건 존재 해야함
   ![image](https://user-images.githubusercontent.com/54137044/103451788-69cdb500-4d0b-11eb-8860-4fe4510b0347.png)
 
 ```html
@@ -813,3 +813,9 @@ float 속성이 적용된 요소의 주위로 다른 요소들이 이를 방지�
   float: left;
 }
 ```
+
+### float - display 수정
+
+설명 : float 속성이 추가된 요소는 display 속성 값이 대부분 block으로 수정
+
+- float 추가 시 자연스레 display : block 되기 때문에 명시 필요 x
