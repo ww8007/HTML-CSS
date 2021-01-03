@@ -1,0 +1,14 @@
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: tomato;
+    margin: 50px;
+    transition: .4s;
+    /* transition-property: width, background;
+    transition-duration: 1s; */
+}
+
+.box:hover {
+    width: 300px;
+    background: dodgerblue;
+}
