@@ -819,3 +819,337 @@ float 속성이 적용된 요소의 주위로 다른 요소들이 이를 방지�
 설명 : float 속성이 추가된 요소는 display 속성 값이 대부분 block으로 수정
 
 - float 추가 시 자연스레 display : block 되기 때문에 명시 필요 x
+
+| 지정값             | 변화값                            |
+| ------------------ | --------------------------------- |
+| inline             | block                             |
+| inline-block       | block                             |
+| inline-table       | block                             |
+| table-row          | block                             |
+| table-row-group    | block                             |
+| table-column       | block                             |
+| table-column-group | block                             |
+| table-cell         | block                             |
+| table-caption      | block                             |
+| table-header-group | block                             |
+| table-footer-group | block                             |
+| flex               | flex /float 속성 효과 없음        |
+| inline-flex        | inline-flex/ float 속성 효과 없음 |
+| 그외               | 변화없음                          |
+
+- css3 display-flex, display-inline-flex
+- 많은 경우에 float 들어가면 block으로 바뀜
+
+### clear
+
+설명 : float 속성이 적용되지 않도록 해제
+
+**속성 값**
+
+| 값    | 의미                              | 기본값 |
+| ----- | --------------------------------- | ------ |
+| none  | 요소 띄움 허용                    | none   |
+| left  | 왼쪽 띄움 해제                    |        |
+| right | 오른쪽 띄움 해제                  |        |
+| both  | 양쪽(왼쪽, 오른쪽) 모두 띄움 해제 |        |
+
+- left, right 따로 명시 할 필요 없이 both를 통한 해제
+
+### position
+
+설명 : 요소의 위치 지정 방법의 유형(기준) 설정
+
+**속성 값**
+
+| 값       | 의미                              | 기본값 |
+| -------- | --------------------------------- | ------ |
+| static   | 유형(기준) 없음/ 배치 불가능      | static |
+| relative | 요소 자신을 기준으로 배치         |        |
+| absolute | 위치 상 부모 요소를 기준으로 배치 |        |
+| fixed    | 브라우저(뷰포트)를 기준으로 배치  |        |
+| sticky   | 스크롤 영역 기준으로 배치         |        |
+
+- relative는 전과 후의 값에 영향을 받기 때문에 주의해서 써야함
+  -> absolute를 쓰는 편이 더 나음
+
+[example]<br>
+![image](https://user-images.githubusercontent.com/54137044/103473024-6acc1880-4dd7-11eb-9941-a9dafa880fa0.png)
+
+---
+
+1. relative
+   ![image](https://user-images.githubusercontent.com/54137044/103473161-bb904100-4dd8-11eb-8f83-92f019afcce1.png)
+
+---
+
+2. absolute
+
+- 부모 요소의 position이 무조건 적으로 존재 해야함
+- static의 경우는 해당 x
+  -> 보통의 경우는 position : relative
+- 바로 상위 부모 요소가 아니더라도 position이 존재 하는 경우까지 올라감
+  모두 없을 경우는 뷰포트 까지 올라가게됨
+  ![image](https://user-images.githubusercontent.com/54137044/103473324-9b618180-4dda-11eb-941b-7a1d669233b4.png)
+
+---
+
+3. fixed
+
+- 브라우저의 상단 배너 같은 느낌으로 어느 위치에 계속 고정
+  ![image](https://user-images.githubusercontent.com/54137044/103473427-b8e31b00-4ddb-11eb-93e1-2231fb8b15b3.png)
+
+---
+
+4. sticky
+
+- 스크롤 영역 기준으로 배치
+- position과 같이 사용되는 값
+- 원래는 javascript를 이용하여 구현하여야 하지만 간단하게 sticky로 사용 가능
+  ![image](https://user-images.githubusercontent.com/54137044/103473695-c2ba4d80-4dde-11eb-8b4d-13e1d5574e73.png)
+
+  1. top
+  2. bottom
+  3. left
+  4. right
+
+  ## position 이 지정 되어 있을 때만 속성 사용가능
+
+  ### top
+
+  설명 : 요소의 position 기준에 맞는 '위쪽' 에서의 거리(위치)를 설정
+  | 값 | 의미 | 기본값 |
+  | -------- | --------------------------------- | ------ |
+  |auto|브라우저가 계산|auto|
+  |단위|px, em, cm 등 단위로 지정|**0**|
+  |%|부모(위치 상의 부모(조상))요소의 세로 너비의 비율로 지정, **음수** 값 허용|
+
+  ### bottom
+
+  설명 : 요소의 position 기준에 맞는 '아래쪽' 에서의 거리(위치)를 설정
+  | 값 | 의미 | 기본값 |
+  | -------- | --------------------------------- | ------ |
+  |auto|브라우저가 계산|auto|
+  |단위|px, em, cm 등 단위로 지정|**0**|
+  |%|부모(위치 상의 부모(조상))요소의 세로 너비의 비율로 지정, **음수** 값 허용|
+
+  ### left
+
+  설명 : 요소의 position 기준에 맞는 '왼쪽' 에서의 거리(위치)를 설정
+  | 값 | 의미 | 기본값 |
+  | -------- | --------------------------------- | ------ |
+  |auto|브라우저가 계산|auto|
+  |단위|px, em, cm 등 단위로 지정|**0**|
+  |%|부모(위치 상의 부모(조상))요소의 가로 너비의 비율로 지정, **음수** 값 허용|
+
+  ### right
+
+  설명 : 요소의 position 기준에 맞는 '오른쪽' 에서의 거리(위치)를 설정
+  | 값 | 의미 | 기본값 |
+  | -------- | --------------------------------- | ------ |
+  |auto|브라우저가 계산|auto|
+  |단위|px, em, cm 등 단위로 지정|**0**|
+  |%|부모(위치 상의 부모(조상))요소의 가로 너비의 비율로 지정, **음수** 값 허용|
+
+  ### 요소 쌓임 순서(Stack order)
+
+  설명 : 요소가 쌓여 있는 순서를 통해 어떤 요소가 사용자와 가깝게 있는지 (더 위에 쌓이는지)를 결정(Z축)
+
+  1. stactic을 제외한 position 속성의 값이 있을 경우 가장 위에 쌓임 값은 무관
+  2. position이 모두 존재한다면 z-index 속성의 숫자 값이 높을 수록 위에 쌓임
+  3. position 속성의 값이 있고 z-index 속성의 숫자 값이 같다면 'HTML' 마지막 코드 일 수록 위에 쌓임(나중에 작성한 코드(요소))
+
+  - z-index
+    position이 있을 때만 효력 발생
+    기본값 0
+    [example]<br>
+    ![image](https://user-images.githubusercontent.com/54137044/103473873-825bcf00-4de0-11eb-8a3a-ac2271195850.png)
+
+  ### display 수정
+
+  설명 : absolute, fixed 속성 ㄱ밧이 적요오딘 요소는 displya 속성의 값이 대부분 block으로 수정됨
+  | 지정값 | 변화값 |
+  | ------------------ | --------------------------------- |
+  | inline | block |
+  | inline-block | block |
+  | inline-table | block |
+  | table-row | block |
+  | table-row-group | block |
+  | table-column | block |
+  | table-column-group | block |
+  | table-cell | block |
+  | table-caption | block |
+  | table-header-group | block |
+  | table-footer-group | block |
+  | flex | flex /float 속성 효과 없음 |
+  | inline-flex | inline-flex/ float 속성 효과 없음 |
+  | 그외 | 변화없음 |
+
+### background
+
+설명 : 요소의 배경을 설정
+background : 색상 이미지경로 반복 위치 스크롤특성;
+
+**속성 값**
+
+| 값                    | 의미                            | 기본값      |
+| --------------------- | ------------------------------- | ----------- |
+| background-color      | 배경 색상                       | transparent |
+| background-image      | 하나 이상의 배경 이미지         | none        |
+| background-repeat     | 배경 이미지의 반복              | repeat      |
+| background-position   | 배경 이미지의 위치              | 0 0         |
+| background-attachment | 배경 이미지의 스크롤 여부(특성) | scroll      |
+
+### background-color
+
+설명 : 요소의 배경 색상을 지정
+
+**속성 값**
+
+| 값          | 의미             | 기본값      |
+| ----------- | ---------------- | ----------- |
+| 색상        | 요소의 배경 색상 |             |
+| transparent | 투명             | transparent |
+
+- 기본적으로 배경색은 투명
+- 계속 작성해왔던 background : tomato 의 단축속성으로 사용했던 것 임
+
+[background-color]<br>
+![image](https://user-images.githubusercontent.com/54137044/103473979-3d389c80-4de2-11eb-8604-e2fcf0181b8e.png)
+
+### background-image
+
+설명 : 요소의 배경에 하나 이상의 이미지를 삽입
+
+**속성 값**
+| 값 | 의미 | 기본값 |
+| ----------- | ---------------- | ----------- |
+|none|이미지 없음|none|
+|url("경로")|이미지 경로)(URL)| |
+
+- 하나 이상의 배경 이미지 삽입 경우 ,(콤마)로 구분
+- 먼저 작성된 이미지가 더 위에 쌓이게 됨
+- IE8 이하 버전 사용 불가
+
+[background-image]<br>
+![image](https://user-images.githubusercontent.com/54137044/103474228-0a43d800-4de5-11eb-9a72-6b3d7e128192.png)
+
+### background-repeat
+
+설명 : 배경 이미지의 반복을 설정
+
+**속성 값**
+
+| 값        | 의미                            | 기본값 |
+| --------- | ------------------------------- | ------ |
+| repeat    | 배경 임지를 수직, 수평으로 반복 | repeat |
+| repeat-x  | 배경 이미지를 수평으로 반복     |        |
+| repeat-y  | 배경 이미지를 수직으로 반복     |        |
+| no-repeat | 반복 없음                       |        |
+
+### background-position
+
+**속성 값**
+
+| 값   | 의미                                                       | 기본값 |
+| ---- | ---------------------------------------------------------- | ------ |
+| %    | 왼쪽 상단 모서리는 0% 0%, <br>오른쪽 하단 모서리는 100%    | 0% 0%  |
+| 방향 | 방향을 입력하여 위치 설정 top, bottom, left, right, center |        |
+| 단위 | px,em,cm 등 단위로 지정                                    |        |
+
+- center는 한번만 입력해도 됨
+- backround-position은 아래나 오른쪽 부터의 거리는 설정 불가
+
+**사용법**
+
+값이 방향
+
+```css
+background-position: 방향1 방향2;
+```
+
+값이 단위(%, px등)일 경우
+
+```css
+background-position: x축 y축;
+```
+
+[example]<br>
+![image](https://user-images.githubusercontent.com/54137044/103475401-30bb4080-4df0-11eb-8d38-24284dd24122.png)
+
+### background-attachment
+
+설명 : 요소가 스크롤될 때 배경 이미지의 스크롤 여부(특성) 설정
+
+**속성 값**
+
+| 값     | 의미                                                                   | 기본값 |
+| ------ | ---------------------------------------------------------------------- | ------ |
+| scroll | 배경 이미지가 요소를 따라서 같이 스크롤 됨                             | scroll |
+| fixed  | 배경 이미지가 뷰포트(Viewport)에 고정되어, 요소와 같이 스크롤되지 않음 |        |
+| local  | 요소 내 스크롤 시 배경 이미지가 같이 스크롤 됨                         |        |
+
+[example] <br>
+![image](https://user-images.githubusercontent.com/54137044/103476090-1ab07e80-4df6-11eb-8324-5d31fa50367b.png)
+
+- local로 설정하면 스크롤 바에 따라서 같이 움직임
+  -> 이렇게 사용하는 경우는 많이 없음
+  [example]<br>
+  ![image](https://user-images.githubusercontent.com/54137044/103476291-ba224100-4df7-11eb-855a-84c8ca16cb30.png)
+
+### background-size
+
+| 값      | 의미                                                                                                                           | 기본값 |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------ | ------ |
+| auto    | 배경 이미지가 원래의 크기로 표시됨                                                                                             | auto   |
+| 단위    | px, em, %등 단위로 지정<br> width, height 형태로 입력가능(E.g. 120px 270px)<br>width만 입력하면 비율에 맞게 지정됨(E.g. 120px) |        |
+| cover   | 배경 이미지의 크기 비율을 유지하며, 요소의 더 넓은 너비에 맞춰짐<br>이미지가 잘릴 수 있음                                      |        |
+| contain | 배경 이미지의 크기 비율을 유지하며, 요소의 더 짧은 너비에 맞춰짐<br> 이미지가 잘리지 않음                                      |        |
+
+- 정확한 size의 값을 알고 있는 것이 아니라면 비율에 맞게 가로 사이즈만 입력하는 것도 좋은 방법이다.
+- cover 긴 너비에 맞춤
+- contain 짧은 너비에 맞춤
+
+### Transitions
+
+설명 : css 속성의 시작과 끝을 지정 (전환 효과)하여 중간 값을 애니메이션
+
+| 값                         | 의미                        | 기본값 |
+| -------------------------- | --------------------------- | ------ |
+| transition-property        | 전환효과를 사용할 속성 이름 | all    |
+| transition-duration        | 전환 효과의 지속시간을 설정 | 0s     |
+| transition-timing-function | 타이밍 함수 지정            | ease   |
+| transition-delay           | 전환 효과의 대기시간 설정   | 0s     |
+
+- transition은 바뀌기 전 상태에 입력
+
+* 타이밍 함수
+  빠르기를 정함
+
+  #### transition-property
+
+  설명 : 전환 효과를 사용할 속성 이름을 설정
+
+  |값|의미|기본값|
+  |all|모든 속성에 적용|all|
+  |속성이름|전환 효과를 사용할 속성 이름 | |
+
+  #### transition-duration
+
+  설명 : 전환 효과의 지속시간을 설정
+
+  |값|의미|기본값|
+  |시간|전환 효과가 지속되는 시간|0s|
+
+  #### transition-timing-function
+
+  설명 : 타이밍 함수(애니메이션 전환 효과를 계산하는 방법)지정
+
+  | 값                    | 의미                    | 기본값 | Cubic Bezier 값               |
+  | --------------------- | ----------------------- | ------ | ----------------------------- |
+  | ease                  | 빠르게-느리게           | ease   | cubic-bezier(.25, .1, .25, 1) |
+  | linear                | 일정하게                |        | cubic-bezier(0, 0, 1, 1)      |
+  | ease-in               | 느리게-빠르게           |        | cubic-bezier(.42, 0, 1, 1)    |
+  | ease-out              | 빠르게-느리게           |        | cubic-bezier(0, 0, .58, 1)    |
+  | ease-in-out           | 느리게-빠르게-느리게    |        | cubic-bezier(0, 0, .58, 1)    |
+  | cubic-bezier(n,n,n,n) | 자신만의 값을 정의(0~1) |        |                               |
+  | steps(n)              | n 번 분활된 애니메이션  |        |                               |
