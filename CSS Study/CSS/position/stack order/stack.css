@@ -1,0 +1,42 @@
+.box-group {
+    display: flex;
+}
+
+.box-group .box {
+    width: 100px;
+    height: 100px;
+    background: tomato;
+    border: 4px dashed red;
+    border-radius: 10px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: -30px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, .7);
+}
+
+.box-group .box:nth-child(2n) {
+    margin-top: 30px;
+}
+
+.box1 {
+    position: relative;
+}
+
+.box2 {
+    position: relative;
+}
+
+.box3 {
+    position: relative;
+    z-index: 1;
+}
+
+.box4 {
+    position: relative;
+}
+
+.box5 {
+    position: relative;
+}
