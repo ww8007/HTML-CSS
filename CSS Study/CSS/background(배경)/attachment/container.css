@@ -1,0 +1,14 @@
+.container {
+    width: 400px;
+    height: 300px;
+    border: 4px solid red;
+    margin: 50px;
+    overflow: auto;
+    background-image: url(https://heropy.blog/css/images/vendor_icons/mongodb.png);
+    background-size: 50%;
+    background-attachment: local;
+}
+
+.for-scroll {
+    height: 2000px;
+}
