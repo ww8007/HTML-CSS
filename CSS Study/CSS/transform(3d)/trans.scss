@@ -1,0 +1,32 @@
+.box {
+    width: $size;
+    height: $size;
+    border: 2px dashed solid;
+    position: relative;
+    transition: 1s;
+    transform: rotateX(30deg) rotateY(45deg);
+    transform-style: preserve-3d;
+}
+
+.axis {
+    $axis-size: $size + 100px;
+    width: $axis-size;
+    height: 0;
+    border-top: 2px dashed;
+    font-size: 20px;
+    font-weight: 900;
+    position: absolute;
+}
+
+.obj {
+    width: $size;
+    height: $size;
+    background-image: url(https://heropy.blog/css/images/vendor_icons/snowpack.png);
+    background-size: cover;
+    border: 1px solid lightgray;
+    padding: 10px;
+    box-sizing: border-box;
+    opacity: .7;
+    transition: 1s;
+    transform: translateZ(100px);
+}
