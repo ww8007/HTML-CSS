@@ -1,0 +1,7 @@
+p {
+    color: black;
+    text-align: justify;
+    columns: 150px 3;
+    column-gap: 20px;
+    column-rule: 2px solid;
+}
