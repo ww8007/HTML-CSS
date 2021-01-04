@@ -1,0 +1,57 @@
+.cards {
+    padding: 20px;
+}
+
+.card {
+    width: 150px;
+    height: 220px;
+    position: relative;
+    perspective: 600px;
+    float: left;
+    margin-right: 15px;
+}
+
+.car:last-child {
+    margin-right: 0;
+}
+
+.card .face {
+    width: 150px;
+    height: 220px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+    position: absolute;
+    backface-visibility: hidden;
+    background-color: white;
+}
+
+.card .face-front {
+    background-image: url(https://heropy.blog/css/images/pattern.png);
+    transform: rotateY(0deg);
+}
+
+.card:hover .face-front {
+    transform: rotateY(-180deg);
+}
+
+.card .face-back {
+    transform: rotateY(180deg);
+}
+
+.card:hover .face-back {
+    transform: rotateY(0deg);
+}
+
+.card .face-front img {
+    width: 90px;
+    filter: grayscale();
+    opacity: .7;
+}
+
+.card .face-back img {
+    width: 120px;
+}
