@@ -1,0 +1,16 @@
+.box {
+    width: 200px;
+    height: 200px;
+    background: tomato;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30;
+    transition: 1s;
+    margin: 100px;
+}
+
+.box:hover {
+    transform: translate(30px, 30px);
+    transform: scale(0.8);
+}
