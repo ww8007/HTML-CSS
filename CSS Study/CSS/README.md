@@ -1153,3 +1153,484 @@ background-position: x축 y축;
   | ease-in-out           | 느리게-빠르게-느리게    |        | cubic-bezier(0, 0, .58, 1)    |
   | cubic-bezier(n,n,n,n) | 자신만의 값을 정의(0~1) |        |                               |
   | steps(n)              | n 번 분활된 애니메이션  |        |                               |
+
+  - cubic-bezier 사용자 보다 브라우저가 더 편리하게 알아들을 수 있음
+
+  ### transition-delay
+
+  설명 : 전환 효과가 몇 초 뒤에 시작할지 대기시간을 설정
+
+  | 값   | 의미                        | 기본값 |
+  | ---- | --------------------------- | ------ |
+  | 시간 | 전환 효과의 대기시간을 설정 | 0s     |
+
+### transform
+
+설명 : 요소의 변환 효과(변형)를 지정
+
+transform: 변환함수1 변환함수2 변환함수3...;
+transform : 원근법 이동 크기 회전 기울임;
+
+```css
+.box {
+  transform: rotate(20deg) translate (10px, 0);
+}
+```
+
+- 변형 효과에는 2d와 3d 개념 존재
+
+#### transform 2D 변환 함수
+
+| 값(변환함수)        | 의미             | 단위       |
+| ------------------- | ---------------- | ---------- |
+| translate(x, y)     | 이동(X축, Y축)   | 단위       |
+| translate(x)        | 이동(X축)        | 단위       |
+| translate(y)        | 이동(Y축)        | 단위       |
+| scale(x, y)         | 크기(X축, Y축)   | 없음(배수) |
+| scaleX(x)           | 크기(X축)        | 없음(배수) |
+| scaleY(y)           | 크기(Y축)        | 없음(배수) |
+| rotate(degree)      | 회전(각도)       | deg        |
+| skew(x-deg, y-deg)  | 기울임(X축, Y축) | deg        |
+| skew(x-deg)         | 기울임(X축)      | deg        |
+| skew(y-deg)         | 기울임(Y축)      | deg        |
+| matrix(n,n,n,n,n,n) | 2차원 변환 효과  | 없음       |
+
+- matrix() -> 일반적으로 사용하기에는 어려움이 있음
+  -> translate, scale, rotate, skew를 사용해서 명시적으로 사용
+
+* 배치하고 끝내는 상황이면 **position** 적용
+  이동하면서 계속 상호작용 필요하다면 **transform**
+
+#### transform 3D 변환 함수
+
+| 값(변환함수)                          | 의미                            | 단위       |
+| ------------------------------------- | ------------------------------- | ---------- |
+| translate3d(x, y, z)                  | 이동(X축, Y축, Z축)             | 단위       |
+| translatZ(z)                          | 이동(Z축)                       | 단위       |
+| scale3d(x, y, z)                      | 크기(X축, Y축, Z축)             | 없음(배수) |
+| scaleZ(z)                             | 크기(Z축)                       | 없음(배수) |
+| rotate3d(x, y, z, a)                  | 회전(X벡터, Y벡터, Z벡터, 각도) | 없음, deg  |
+| rotateX(x)                            | 회전(X축)                       | deg        |
+| rotateY(y)                            | 회전(Y축)                       | deg        |
+| rotateZ(z)                            | 회전(Z축)                       | deg        |
+| perspective(n)                        | 원근법(거리)                    | 단위       |
+| matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n) | 2차원 변환 효과                 | 없음       |
+
+- rotateX, rotateY
+  3차원 변환 함수임
+- Z축은 우리 눈에는 보이지 않음
+
+* perspective는 transform 맨 앞부분에 있어야함
+  값이 커질수록 가까이서 보는 느낌
+  [example]<br>
+  ![image](https://user-images.githubusercontent.com/54137044/103497799-f13f3380-4e85-11eb-8a7f-3969ec6bf4ad.png)
+
+### transform 변환 속성
+
+| 속성                | 의미                                              |
+| ------------------- | ------------------------------------------------- |
+| transform-orgin     | 요소 변환의 기준점을 설정                         |
+| transform-style     | 3D 변환 요소의 자식요소도 3D 변환을 사용할지 설정 |
+| perspecitve         | 하위 요소를 관찰하는 원근 거리를 설정             |
+| perspective-origin  | 원근 거리의 기준점을 설정                         |
+| backface-visibility | 3D 변환으로 회전된 요소의 뒷면 숨김을 설정        |
+
+#### transform-origin
+
+설명: 요소 변환의 기준점을 설정
+
+| 값  | 의미                     | 기본값 |
+| --- | ------------------------ | ------ |
+| X축 | left,right,center,%,단위 | 50%    |
+| Y축 | top,bottom,center,%,단위 | 50%    |
+| Z축 | 단위                     | 0      |
+
+[right,bottom]<br>
+![image](https://user-images.githubusercontent.com/54137044/103498224-53e4ff00-4e87-11eb-9a9b-4787dd9ba436.png)
+
+#### transform-style
+
+설명 : 3D 변환 요소의 자식요소도 3D 변환을 사용할지 설정
+
+| 값          | 의미                                | 기본값 |
+| ----------- | ----------------------------------- | ------ |
+| flat        | 자식 요소의 3D 변환을 사용하지 않음 | flat   |
+| preserve-3d | 자식 요소의 3D 변환을 사용함        |        |
+
+- perspective의 width와 부모 요소의 사이즈 일치 시키는게 좋음
+- preserve-3d - 자식 요소에서도 3d 사용하겠다
+  -> 바로 아래 자식만 적용이 되기 때문에 다른 곳에도 사용하면 부모 요소에 계속적인 선언이 필요함
+  [example]<br>
+  ![image](https://user-images.githubusercontent.com/54137044/103498721-09fd1880-4e89-11eb-8295-f0528e9fa778.png)
+
+### perspective
+
+설명 : 하위 요소를 관찰하는 원근 거리를 설정
+
+| 값   | 의미                      | 기본값 |
+| ---- | ------------------------- | ------ |
+| 단위 | px, em, cm 등 단위로 지정 |        |
+
+- 선언 하는 곳이 관찰하려는 곳의 상위 부분에 선언
+
+  #### perspective 속성과 함수의 차이점
+
+  | 속성/함수                | 적용대상              | 기준점 설정        |
+  | ------------------------ | --------------------- | ------------------ |
+  | perspective              | 관찰 대상의 부모 요소 | perspective-origin |
+  | transform: perspective() | 관찰 대상             | perspective-origin |
+
+  - 속성은 관찰 대상의 부모(조상) 요소에 적용하여 하위 요소들을 관찰하는 원근 거리를 설정
+  - 함수는 관찰 대상에 직접 적용하여 그 대상을 관찰하는 원근 거리를 설정
+
+  ### perspective-origin
+
+  설명 : 원근 거리의 기준점을 설정
+
+  | 값  | 의미                         | 기본값 |
+  | --- | ---------------------------- | ------ |
+  | X축 | left, right, ceter, %, 단위  | 50%    |
+  | Y축 | top, bottom, center, %, 단위 | 50%    |
+
+  [exaple]<br>
+  ![image](https://user-images.githubusercontent.com/54137044/103499185-90662a00-4e8a-11eb-95b3-d26aef3e405c.png)
+
+### backface-visibility
+
+설명 : 3D 변환으로 회전된 요소의 둣면 숨김을 설정
+
+| 값      | 의미             | 기본값  |
+| ------- | ---------------- | ------- |
+| visible | 뒷면 숨기지 않음 | visible |
+| hidden  | 뒷면 숨김        |         |
+
+### matrix(a,b,c,d,e,f)
+
+설명 : 요소의 2차원 변환(Transforms)효과를 지정
+
+scale(), skew(), translate() 그리고 rotate()지정
+
+- 일반적인 경우에는 일반 변환 함수를 사용하면 됨
+- 일반함수가 matrix 함수로 변환되어서 브라우저에는 적용
+
+![image](https://user-images.githubusercontent.com/54137044/103499563-e12a5280-4e8b-11eb-9bb8-609a41a6b830.png)
+
+### example
+
+[card]<br>
+![image](https://user-images.githubusercontent.com/54137044/103501004-4122f800-4e90-11eb-868d-fc20798b3c42.png)
+[hover]
+![image](https://user-images.githubusercontent.com/54137044/103501041-59931280-4e90-11eb-978e-3ae4bd5ee79f.png)
+
+### animation
+
+설명 : 요소에 애니메이션을 설정/제어
+
+| 값                        | 의미                              | 기본값  |
+| ------------------------- | --------------------------------- | ------- |
+| animation-name            | @keyframes 규칙의 이름을 설정     | none    |
+| animation-duration        | 애니메이션의 지속 시간 설정       | 0s      |
+| animation-timing-function | 타이밍 함수 지정                  | ease    |
+| animation-delay           | 애니메이션의 대기 시간 설정       | 0s      |
+| animation-iteration-count | 애니메이션의 반복 횟수 설정       | 1       |
+| animation-direction       | 애니메이션의 반복 방향 설정       | normal  |
+| animation-fill-mode       | 애니메이션의 전후 상태(위치) 설정 | none    |
+| animation-play-state      | 애니메이션의 재생과 정지 설정     | running |
+
+animation : 애니메이션이름 지속시간 [타이밍함수 대기시간 반복횟수 반복방향 전후상태 재생/정지]
+
+#### @keyframes
+
+설명 : 2개 이상의 애니메이션 중간 상태(프레임)을 지정
+
+```css
+@keyframes move-box {
+  0% {
+    left: 100px;
+  }
+  100% {
+    right: 200px;
+  }
+}
+```
+
+### animation-name
+
+설명 : @keyframes규칙(애니메이션 프레임)의 이름을 지정
+
+| 값             | 의미                                                | 기본값 |
+| -------------- | --------------------------------------------------- | ------ |
+| none           | 애니메이션을 지정하지 않음                          | none   |
+| @keyframes이름 | 이름이 일치하는 @keyframes 규칙의 애니메이션을 적용 |        |
+
+### animation-duration
+
+설명 : 애니메이션의 지속 시간 설정
+
+| 값   | 의미             | 기본값 |
+| ---- | ---------------- | ------ |
+| 시간 | 지속 시간을 설정 | 0s     |
+
+- ms 사용가능
+
+### animation-timing-function
+
+설명 : 타이밍 함수(애니메이션 효과를 계산하는 방법)지정
+| 값 | 의미 | 기본값 | Cubic Bezier 값 |
+| --------------------- | ----------------------- | ------ | ----------------------------- |
+| ease | 빠르게-느리게 | ease | cubic-bezier(.25, .1, .25, 1) |
+| linear | 일정하게 | | cubic-bezier(0, 0, 1, 1) |
+| ease-in | 느리게-빠르게 | | cubic-bezier(.42, 0, 1, 1) |
+| ease-out | 빠르게-느리게 | | cubic-bezier(0, 0, .58, 1) |
+| ease-in-out | 느리게-빠르게-느리게 | | cubic-bezier(0, 0, .58, 1) |
+| cubic-bezier(n,n,n,n) | 자신만의 값을 정의(0~1) | | |
+| steps(n) | n 번 분활된 애니메이션 | | |
+
+### animation-delay
+
+설명 : 애니메이션의 대기 시간 설정
+
+| 값   | 의미             | 기본값 |
+| ---- | ---------------- | ------ |
+| 시간 | 대기 시간을 설정 | 0s     |
+
+- 음수값 허용 - 바로 시작 되지만 그 만큼 애니메이션 앞서 시작(주기 도중)
+
+* delay가 duration보다 앞에만 있지 않으면 순서 바뀌어도 무관
+
+### animation-iteration-count
+
+설명 : 애니메이션 반복 횟수를 설정
+
+| 값       | 의미             | 기본값 |
+| -------- | ---------------- | ------ |
+| 숫자     | 반복 횟수를 설정 | 1      |
+| infinite | 무한 반복        |        |
+
+### animation-direction
+
+설명 : 애니메이션의 반복 방향을 설정
+
+| 값                | 의미                             | 기본값 |
+| ----------------- | -------------------------------- | ------ |
+| normal            | 정방향만 반복                    | normal |
+| reverse           | 역방향만 반복                    |        |
+| alternate         | 정방향에서 역방향으로 반복(왕복) |        |
+| alternate-reverse | 역방향에서 정방향으로 반복(왕복) |        |
+
+- 횟수를 소비해서 방향으로 가는데 alternate나 reverse는 횟수를 1회 더 설정해 줘야 함
+
+### animation-fill-mode
+
+설명 : 애니메이션의 전후 상태(위치)를 설정
+
+| 값        | 의미                                                                             | 기본값 |
+| --------- | -------------------------------------------------------------------------------- | ------ |
+| none      | 기존 위치에서 시작->애니메이션 시작 위치로 이동->동작->기존위치에서 끝           | none   |
+| forward   | 기존 위치에서 시작->애니메이션 시작 위치로 이동->동작->애니메이션 끝 위치에서 끝 |        |
+| backwards | 애니메이션 시작 위치에서 시작->동작->기존 위치에서 끝                            |        |
+| both      | 애니메이션 시작 위치에서 시작->동작->애니메이션 끝 위치에서 끝                   |        |
+
+### animation-play-state
+
+설명 : 애니메이션의 재생과 정지를 설정
+
+| 값      | 의미                   | 기본값  |
+| ------- | ---------------------- | ------- |
+| running | 애니메이션을 동작      | running |
+| paused  | 애니메이션 동작을 정지 |         |
+
+### Mulit-Columns
+
+설명 : 일반 블록 레이아웃을 확장하여 여러 텍스트 다단으로 쉽게 정리하며 가독성 확보
+
+![image](https://user-images.githubusercontent.com/54137044/103506839-0d040300-4ea1-11eb-9610-5e52ac0088c0.png)
+
+#### columns
+
+설명 : 다단을 정의
+
+| 값           | 의미                               | 기본값 |
+| ------------ | ---------------------------------- | ------ |
+| auto         | 브라우저가 단의 너비와 개수를 설정 | auto   |
+| column-width | 단의 최적 너비를 설정              | auto   |
+| column-count | 단의 개수를 설정                   | auto   |
+
+```css
+.text {
+  columns: 100px 2;
+}
+```
+
+#### column-width
+
+설명 : 단의 최적 너비를 설정
+
+| 값   | 의미                        | 기본값 |
+| ---- | --------------------------- | ------ |
+| auto | 브라우저가 단의 너비를 설정 | auto   |
+| 단위 | px,em,cm등 단위로 지정      |        |
+
+- 각 단이 줄어들 수 있는 최적 너비(최소 너비)를 설정하며, 요소의 너비가 가변하여 하나의 단이 최적 너비보다 줄어들 경우 단의 개수가 조정
+
+#### column-count
+
+설명 : 단의 개수를 설정
+
+| 값   | 의미                        | 기본값 |
+| ---- | --------------------------- | ------ |
+| auto | 브라우저가 단의 개수를 설정 | auto   |
+| 숫자 | 단의 개수를 설정            |        |
+
+#### column-gap
+
+설명 : 단과 단 사이의 간격 설정
+
+| 값     | 의미                                       | 기본값 |
+| ------ | ------------------------------------------ | ------ |
+| normal | 브라우저가 단과 단 사이의 간격을 설정(1em) | normal |
+| 단위   | px,em,cm 등 단위로 지정                    |        |
+
+#### column-rule
+
+설명 : 단과 단 사이의 (구분)선을 지정
+
+| 값           | 의미             | 기본값               |
+| ------------ | ---------------- | -------------------- |
+| column-width | 선의 두께를 지정 | medium               |
+| column-style | 선의 종류를 지정 | none                 |
+| column-color | 선의 색상을 지정 | 요소의 글자색과 동일 |
+
+- 구분선은 단과 단 사이의 중간에 위치
+- 구분선의 기본 색상은 글자색의 영향을 받음
+
+## Flex
+
+---
+
+Flex는 요소의 크기가 불분명하거나 동적인 경우에도, 각 요소를 정렬할 수 있는 효율적인 방법을 제공합니다.
+
+1. Container
+   Items를 감싸는 부모 요소이며 각 Item을 정렬하기 위해선 Container가 필수
+   display, flex-flow, justify-content 적용 가능
+2. Item
+   order, flex, align-self 사용 가능
+
+![image](https://user-images.githubusercontent.com/54137044/103508830-1db67800-4ea5-11eb-92ed-6f5fd25bc9bf.png)
+
+### Flex Container
+
+| 속성            | 의미                                                  |
+| --------------- | ----------------------------------------------------- |
+| display         | Flex Container를 정의                                 |
+| flex-flow       | flex-direction와 flex-wrap의 단축 속성                |
+| flex-direction  | Flex Items의 주 축(main-axis)을 설정                  |
+| flex-wrap       | Flex Items의 여러 줄 묶음(줄 바꿈) 설정               |
+| justify-content | 주 축(main-axis)의 정렬 방법을 설정                   |
+| align-content   | 교차 축(cross-axis)의 정렬 방법을 설정(2줄 이상)      |
+| align-items     | 교차 축(cross-axis)에서 Items의 정렬 방법을 설정(1줄) |
+
+### display
+
+| 값          | 의미                                | 기본값 |
+| ----------- | ----------------------------------- | ------ |
+| flex        | Block 특성의 Flex Container를 정의  |
+| inline-flex | Inline 특성의 Flex Container를 정의 |
+
+- block으로 될지 inline으로 될지 정함
+
+![image](https://user-images.githubusercontent.com/54137044/103509146-cb298b80-4ea5-11eb-98c3-9dd10f0323e6.png)
+
+### flex-flow
+
+설명 : 단축 속성으로 Flex Items의 주 축 (main-axis)을 설정, items의 여러 줄 묶음(줄 바꿈)도 설정
+
+```css
+.flex-container {
+  flex-flow: row-reverse wrap;
+}
+```
+
+| 값             | 의미                               | 기본값 |
+| -------------- | ---------------------------------- | ------ |
+| flex-direction | Items의 주 축(main-axis)을 설정    | row    |
+| flex-wrap      | Items의 여러 줄 묶음(줄 바꿈) 설정 | nowrap |
+
+#### flex-direction
+
+설명 : Items의 주 축(main-axis)을 설정
+|값 |의미| 기본값|
+|---|---|---|
+|row| Itmes를 수평축(왼쪽에서 오른쪽으로)으로 표시 |row|
+|row-reverse| Items를 row의 반대 축으로 표시 | |
+|column| Items를 수직축(위에서 아래로)으로 표시| |
+|column-reverse |Items를 column의 반대 축으로 표시| |
+
+![image](https://user-images.githubusercontent.com/54137044/103509642-f1036000-4ea6-11eb-82b0-44e1e26e2b34.png)
+
+#### 주 축(main-axis)과 교차 축(cross-axis)
+
+row는 items를 수평축으로 표시
+주 축 : 수평
+교차 축 : 수직
+column은 items 수직으로 표시
+주 축 : 수직
+교차 축 : 수평
+
+- 주 축이 바뀌면 교차 축도 바뀜
+  ![image](https://user-images.githubusercontent.com/54137044/103509796-48a1cb80-4ea7-11eb-81ac-b4fec9b22e54.png)
+
+#### 시작점(flex-start)과 끝점(flex-end)
+
+- reverse에 따라 변경되는 값이 아님
+
+![image](https://user-images.githubusercontent.com/54137044/103509926-856dc280-4ea7-11eb-9d5c-d4ebe20dde63.png)
+
+![image](https://user-images.githubusercontent.com/54137044/103510033-bf3ec900-4ea7-11eb-809c-8c06c2d2f9dd.png)
+
+### flex-wrap
+
+설명 : items의 여러 줄 묶음(줄 바꿈)을 설정
+
+| 값           | 의미                                           | 기본값 |
+| ------------ | ---------------------------------------------- | ------ |
+| nowrap       | 모든 Itmes를 여러 줄로 묶지 않음(한 줄에 표시) | nowrap |
+| wrap         | Items를 여러 줄로 묶음                         |        |
+| wrap-reverse | Items를 wrap의 역 방향으로 여러 줄로 묶음      |        |
+
+![image](https://user-images.githubusercontent.com/54137044/103510534-c9ad9280-4ea8-11eb-9dc5-9b57b80d3644.png)
+
+[example]
+![image](https://user-images.githubusercontent.com/54137044/103514582-442de080-4eb0-11eb-9dc9-1e2402c8f0b1.png)
+
+### justify-content
+
+설명 : 주 축(main-axis)의 정렬 방법을 설정
+
+| 값            | 의미                                                                                    | 기본값     |
+| ------------- | --------------------------------------------------------------------------------------- | ---------- |
+| flex-start    | Items를 시작점(flex-start)으로 정렬                                                     | flex-start |
+| flex-end      | Items를 끝점(flex-end)으로 정렬                                                         |            |
+| center        | Items를 가운데 정렬                                                                     |            |
+| space-between | 시작 Item은 시작점에, 마지막 Item은 끝점에 정렬되고 나머지 Items는 사이에 고르게 정렬됨 |            |
+| space-around  | Items를 균등한 여백을 포함하여 정렬                                                     |            |
+
+justify-content: 정렬방법
+
+![image](https://user-images.githubusercontent.com/54137044/103514762-a7b80e00-4eb0-11eb-83b1-9799c6e8a833.png)
+
+### align-content
+
+설명 : 교차 축(cross-axis)의 정렬 방법을 설정
+flex-wrap 속성을 통해 items가 여러줄 이상이고 여백이 있을 경우 사용 가능
+
+| 값            | 의미                                                                                    | 기본값     |
+| ------------- | --------------------------------------------------------------------------------------- | ---------- |
+| strech        | Container의 교차 축을 채우기 위해 itmes 늘림                                            | stretch    |
+| flex-start    | Items를 시작점(flex-start)으로 정렬                                                     | flex-start |
+| flex-end      | Items를 끝점(flex-end)으로 정렬                                                         |            |
+| center        | Items를 가운데 정렬                                                                     |            |
+| space-between | 시작 Item은 시작점에, 마지막 Item은 끝점에 정렬되고 나머지 Items는 사이에 고르게 정렬됨 |            |
+| space-around  | Items를 균등한 여백을 포함하여 정렬                                                     |            |
+
+![image](https://user-images.githubusercontent.com/54137044/103515324-db476800-4eb1-11eb-9d07-d30094cdf80d.png)
