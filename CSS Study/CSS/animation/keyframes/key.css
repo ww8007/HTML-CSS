@@ -1,0 +1,27 @@
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: tomato;
+    border-radius: 10px;
+}
+
+.box:hover {
+    animation: my-ani 3s infinite alternate;
+    animation: my-ani;
+    animation-duration: 3s;
+}
+
+@keyframes my-ani {
+    0% {
+        width: 100px;
+        background-color: tomato;
+    }
+    75% {
+        width: 500px;
+        background-color: dodgerblue;
+    }
+    100% {
+        width: 300px;
+        background-color: yellowgreen;
+    }
+}
