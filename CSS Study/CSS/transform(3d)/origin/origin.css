@@ -1,0 +1,8 @@
+img {
+    margin: 200px;
+    width: 200px;
+    border: 1px solid lightgray;
+    transition: 1s;
+    transform: rotate(45deg);
+    transform-origin: bottom right;
+}
