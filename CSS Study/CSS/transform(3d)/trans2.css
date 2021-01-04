@@ -1,0 +1,7 @@
+img {
+    margin: 60px;
+    width: 300px;
+    border: 1px solid lightgray;
+    transition: 1s;
+    transform: perspective(300px) rotateY(45deg);
+}
