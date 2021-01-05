@@ -1,0 +1,10 @@
+.container {
+    display: grid;
+    grid-template-rows: 100px 100px 100px;
+    grid-template-columns: repeat(2, 1fr);
+    border: 4px solid lightgray;
+}
+
+.item {
+    border: 2px dashed red;
+}
