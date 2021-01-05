@@ -1,0 +1,15 @@
+.container {
+    width: 600px;
+    display: grid;
+    grid-template-rows: repeat(2, 100px);
+    grid-template-columns: 1fr [center-start] 1fr [center-end] 1fr;
+    grid-auto-flow: dense;
+}
+
+.item {
+    border: 10px solid red;
+}
+
+.item:nth-child(1) {
+    grid-column: center-start / center-end;
+}
