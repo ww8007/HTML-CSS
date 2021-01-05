@@ -1634,3 +1634,705 @@ flex-wrap 속성을 통해 items가 여러줄 이상이고 여백이 있을 경�
 | space-around  | Items를 균등한 여백을 포함하여 정렬                                                     |            |
 
 ![image](https://user-images.githubusercontent.com/54137044/103515324-db476800-4eb1-11eb-9d07-d30094cdf80d.png)
+
+### align-items
+
+설명 : 교차 축(cross-axis)에서 items의 정렬 방법 설정
+
+- items가 한 줄일 경우 많이 사용
+
+- 여러줄 -> flex-wrap -> align content
+- align-items 사용하기 위해 align-content 속성 -> stretch
+
+| 값         | 의미                                           | 기본값  |
+| ---------- | ---------------------------------------------- | ------- |
+| stretch    | Container의 교차 축을 채우기 위해 Items를 늘림 | stretch |
+| flex-start | Items를 각 줄의 시작점(flex-start)으로 정렬    |         |
+| flex-end   | Items를 각 줄의 끝점(flex-end)으로 정렬        |         |
+| center     | Items를 가운데 정렬                            |         |
+| baseline   | Items를 문자 기준선에 정렬                     |         |
+
+![image](https://user-images.githubusercontent.com/54137044/103605043-1602dc00-4f56-11eb-92ab-26892dc39fe0.png)
+
+### Flex Items
+
+| 속성        | 의미                                            |
+| ----------- | ----------------------------------------------- |
+| order       | Flex Item의 순서를 설정                         |
+| flex        | flex-grow, flex-shrink, flex-basis의 단축 속성  |
+| flex-grow   | Flex Item의 증가 너비 비율을 설정               |
+| flex-shrink | Flex Item의 감소 너비 비율을 설정               |
+| flex-basis  | Flex Item의 (공간 배분 전) 기본 너비 설정       |
+| align-self  | 교차 축(cross-axis)에서 Item의 정렬 방법을 설정 |
+
+#### order
+
+설명 : Item의 순서를 설정
+
+- Item에 숫자를 지정 순서 클수록 뒤로 순서 밀림
+- 음수 허용
+- HTML 구조와 상관없이 순서를 변경 가능하기 때문에 편리
+
+| 값   | 의미               | 기본값 |
+| ---- | ------------------ | ------ |
+| 숫자 | Item의 순서를 설정 | 0      |
+
+[example]<br>
+![image](https://user-images.githubusercontent.com/54137044/103605428-3a12ed00-4f57-11eb-840e-2f5d196591aa.png)
+
+#### flex-grow
+
+설명 : Item의 증가 너비 비율을 설정
+
+- 숫자가 클 수록 너 많은 너비를 가짐
+- Item이 가변 너비가 아니거나, 값이 0일 경우 효과 x
+
+* 가변하는 부분에 적용하고 다른 부분은 고정으로 사용하게 하는 곳에 사용
+
+| 값   | 의미                         | 기본값 |
+| ---- | ---------------------------- | ------ |
+| 숫자 | Item의 증가 너비 비율을 설정 | 0      |
+
+![image](https://user-images.githubusercontent.com/54137044/103605618-b6a5cb80-4f57-11eb-9fe6-a8ff5daf9998.png)
+
+#### flex-shrink
+
+설명 : Item이 감소하는 너비의 비율을 설정
+
+- 숫자가 크면 더 많은 너비가 감소
+- 가변너비가 아니거나, 값이 0인 경우 효과 x
+- 감소 너비는 요소의 너비에 영향을 받기 때문에 계산이 까다로움
+
+| 값   | 의미                         | 기본값 |
+| ---- | ---------------------------- | ------ |
+| 숫자 | Item의 감소 너비 비율을 설정 | 1      |
+
+계산 방법 : flex-basis - (감소된 길이 \* 비율)
+
+![image](https://user-images.githubusercontent.com/54137044/103606348-83fcd280-4f59-11eb-97c5-fade2c8c06cb.png)
+
+#### flex-basis
+
+설명 : Item (공간 배분 전) 기본 너비를 설정
+
+- 값이 auto 인 경우 width, height로 너비 설정 가능
+  -> 나머지 영역을 중심으로 계산
+- flex-basis 0인 경우
+  -> flex-grow나 shrink 중심으로 따라감
+  | 값 | 의미 | 기본값 |
+  | ---- | ------------------------- | ------ |
+  | auto | 가변 Item과 같은 너비 | auto |
+  | 단위 | px, em, cm 등 단위로 지정 | |
+
+### flex
+
+Item의 너비(증가, 감소, 기본)를 설정하는 단축 속성
+
+| 값          | 의미                                 | 기본값 |
+| ----------- | ------------------------------------ | ------ |
+| flex-grow   | Item의 증가 너비 비율을 설정         | 0      |
+| flex-shrink | Item의 감소 너비 비율을 설정         | 1      |
+| flex-basis  | Item의 (공간 배분 전) 기본 너비 설정 | auto   |
+
+- flex : 증가너비 감소너비 기본너비;
+- basis의 경우 단축 속성에 명시적으로 적지 않으면 0이 된다
+  -> 개별 속성은 auto이지만 주의 필요
+
+```css
+.item {
+  flex: 1 1 20px; /* 증가너비 감소너비 기본너비 */
+  flex: 1 1; /* 증가너비 감소너비 */
+  flex: 1 20px; /* 증가너비 기본너비 (단위를 사용하면 flex-basis가 적용됩니다) */
+}
+```
+
+### align-self
+
+설명 : 교차 축(cross-axis)에서 개별 item의 정렬 방법을 설정
+
+- align-items -> Container내 모든 Items의 정렬 방법 설정
+  -> 일부 Item만 정렬 방법을 변경하기 위해서는 align-self 사용
+- align-items 속성보다 우선
+
+| 값         | 의미                                          | 기본값 |
+| ---------- | --------------------------------------------- | ------ |
+| auto       | Container의 align-items 속성을 상속받음       | auto   |
+| stretch    | Container의 교차 축을 채우기 위해 Item을 늘림 |        |
+| flex-start | Item을 각 줄의 시작점(flex-start)으로 정렬    |        |
+| flex-end   | Item을 각 줄의 끝점(flex-end)으로 정렬        |        |
+| center     | Item을 가운데 정렬                            |        |
+| baseline   | Item을 문자 기준선에 정렬                     |        |
+
+[example]<br>
+![image](https://user-images.githubusercontent.com/54137044/103607994-9f69dc80-4f5d-11eb-91c6-2707b20980e0.png)
+
+## Grid
+
+---
+
+2차원(행, 열)의 레이아웃 시스템 제공
+복잡한 레이아웃을 위해 CSS Grid 사용
+
+### display
+
+설명 : Grid Container(컨테이너) 정의
+정의된 컨테이너의 자식 요소들은 자동으로 Grid Items(아이템)로 정의
+
+- 그리드 사용에는 컨테이너에 필수로 작성
+
+* grid로 하면 block 요소처럼 수직으로 쌓임
+  -> inline-grid 사용 가능
+
+| 값          | 의미                                |
+| ----------- | ----------------------------------- |
+| grid        | Block 특성의 Grid Container를 정의  |
+| inline-grid | Inline 특성의 Grid Container를 정의 |
+
+[inline-grid]<br>
+![image](https://user-images.githubusercontent.com/54137044/103609174-9fb7a700-4f60-11eb-973f-e2b07de5baf4.png)
+
+### grid-template-rows
+
+설명 : 명시적 행(Track) 크기 정의, 라인(Line)의 이름도 정의 가능
+
+- **fr(fraction, 공간 비율)**단위 사용 가능
+- **repeat()** 함수 사용 가능
+  repeat 인자는 여러개 삽입 가능
+
+* 단위를 늘려갈 때 마다 fr을 늘려주면 비효율적
+  -> repeat() 함수 사용
+* 이름을 사용할 때는 [] 대괄호 붙여줌
+* 중복된 선의 이름도 지정 가능
+* 선의 이름을 매번 명시할 필요 없음
+
+```css
+.container {
+  display: grid;
+  grid-template-rows: 1행크기 2행크기 ...;
+  grid-template-rows: [선이름] 1행크기 [선이름] 2행크기 [선이름] ...;
+  /* 각 행의 크기를 정의합니다. */
+  .container {
+    grid-template-rows: 100px 200px;
+  }
+  /* 동시에 각 라인의 이름도 정의할 수 있습니다. */
+  .container {
+    grid-template-rows: [first] 100px [second] 200px [third];
+  }
+  /* 라인에 중복된 이름을 지정할 수 있습니다. */
+  .container {
+    grid-template-rows: [row1-start] 100px [row1-end row2-start] 200px [row2-end];
+  }
+}
+```
+
+### grid-template-columns
+
+설명 : 명시적 열(Track) 크기 정의, 라인(Line)의 이름도 정의 가능
+
+- **fr(fraction, 공간 비율)**단위 사용 가능
+- **repeat()** 함수 사용 가능
+  repeat 인자는 여러개 삽입 가능
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 1행크기 2열크기 ...;
+  grid-template-columns: [선이름] 1열크기 [선이름] 2열크기 [선이름] ...;
+  /* 각 열의 크기를 정의합니다. */
+  .container {
+    grid-template-columns: 100px 200px;
+  }
+  /* 동시에 각 라인의 이름도 정의할 수 있습니다. */
+  .container {
+    grid-template-columns: [first] 100px [second] 200px [third];
+  }
+  /* 라인에 중복된 이름을 지정할 수 있습니다. */
+  .container {
+    grid-template-columns: [col1-start] 100px [col1-end col2-start] 200px [col2-end];
+  }
+}
+```
+
+[example]<br>
+![image](https://user-images.githubusercontent.com/54137044/103609837-186b3300-4f62-11eb-9abb-0781c197c3c2.png)
+
+### grid-row, grid-column
+
+grid-row-start과 grid-row-end의 단축 속성
+grid-column-start과 grid-column-end의 단축 속성
+
+- 각 속성 **/** 로 구분
+
+```css
+.item {
+  grid-row: <grid-row-start> / <grid-row-end>;
+  grid-column: <grid-column-start> / <grid-column-end>;
+}
+```
+
+[firefox-grid]<br>
+![image](https://user-images.githubusercontent.com/54137044/103610508-b7445f00-4f63-11eb-884e-d48bfc71b1db.png)
+
+### grid-template-areas
+
+설명 : 지정된 그리드 영역 이름(gird-area)을 참조해 그리드 템플릿 생성
+
+- grid-area 는 Grid Container가 아닌 Grid Item에 적용
+
+* 빈칸은 **.**으로 입력 가능
+
+```css
+.container {
+  display: grid;
+  grid-template-rows: repeat(3, 100px);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    'header header header'
+    'main main aside'
+    'footer footer footer';
+}
+header {
+  grid-area: header;
+}
+main {
+  grid-area: main;
+}
+aside {
+  grid-area: aside;
+}
+footer {
+  grid-area: footer;
+}
+```
+
+[example]<br>
+![image](https://user-images.githubusercontent.com/54137044/103611963-c678dc00-4f66-11eb-95bc-d824f032e82f.png)
+
+### row-gap(grid-row-gap)
+
+설명 : 각 행과 행 사이의 간격(Gutter) 지정
+
+- 명확하게는 그리드 선(Grid Line)의 크기를 지정한다고 볼 수 있음
+
+```css
+.container {
+  row-gap: 크기;
+}
+```
+
+### column-gap(grid-column-gap)
+
+설명 : 각 열과 열 사이의 간격(Gutter) 지정
+
+- 명확하게는 그리드 선(Grid Line)의 크기를 지정한다고 볼 수 있음
+
+```css
+.container {
+  column-gap: 크기;
+}
+```
+
+[example]<br>
+![image](https://user-images.githubusercontent.com/54137044/103611870-8d406c00-4f66-11eb-9a70-70f5e2eac4f6.png)
+
+### gap(grid-gap)
+
+각 행과 행, 열과 열 사이의 간격(Gutter)을 지정합니다.
+
+- grid- 접두사는 폐기 -> 일부 브라우저 지원 위해 사용해야 할 수 있음
+
+```css
+.container {
+  gap: <grid-row-gap> <grid-column-gap>;
+}
+```
+
+### grid-auto-rows
+
+설명 : 암시적 행(Track) 크기를 정의
+아이템(Item)이 **grid-template-rows**로 정의한 명시적 행 외부에 배치되는 경우 암시적 행의 크기가 적용됨
+
+- 암시적 크기 인 경우 음수 값 사용 불가
+
+* 암시적 크기가 명시가 되면 임의의 지점에 배치와 정렬 가능
+
+### grid-auto-colunms
+
+설명 : 암시적 열(Track)의 크기를 정의
+아이템(Item)이 grid-template-columns로 정의한 명시적 열 외부에 배치되는 경우 암시적 열의 크기가 적용됨
+
+- 암시적 크기 인 경우 음수 값 사용 불가
+
+* 암시적 크기가 명시가 되면 임의의 지점에 배치와 정렬 가능
+
+[example]<br>
+![image](https://user-images.githubusercontent.com/54137044/103617389-823f0900-4f71-11eb-8947-dfde7933b599.png)
+
+### grid-auto-flow
+
+배치하지 않은 아이템을 어떤 방식의 '자동 배치 알고리즘'으로 처리할지 정의
+
+- 배치한 아이템은 grid-area(이하 개별 속성 포함)를 사용한 아이템 의미
+  |값| 의미| 기본값|
+  |---|--|---|
+  |row| 각 행 축을 따라 차례로 배치| row|
+  |column| 각 열 축을 따라 차례로 배치| |
+  |row dense(dense)| 각 행 축을 따라 차례로 배치, 빈 영역 메움!| |
+  |column dense |각 열 축을 따라 차례로 배치, 빈 영역 메움! | |
+
+* dense를 사용하면 빈공간에 알아서 들어감
+
+1. row, row dense
+
+```css
+.container {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: row || row dense || dense;
+}
+.item:nth-child(2) {
+  grid-column: span 3;
+}
+```
+
+![image](https://user-images.githubusercontent.com/54137044/103617915-625c1500-4f72-11eb-8baf-78d3a8ae5a25.png)
+
+2. column, column dense
+
+```css
+.container {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: column || column dense;
+}
+.item:nth-child(1) {
+  grid-column: 2 / span 2;
+}
+.item:nth-child(2) {
+  grid-column: span 2;
+}
+```
+
+![image](https://user-images.githubusercontent.com/54137044/103617991-891a4b80-4f72-11eb-944a-a0b4bb295514.png)
+
+### grid-row
+
+설명 : grid-row-start와 grid-row-end의 단축 속성
+
+- 각 속성을 / 로 구분
+
+- 2 / span 3
+  2 + 3 = 5 -> 2 ~ 5
+- span 3 / 4
+  4 - 3 = 1 -> 1 ~ 4
+
+```css
+.item {
+  grid-row: <grid-row-start> / <grid-row-end>;
+}
+```
+
+### grid-area
+
+설명 : grid-row-start, grid-column-start, grid-row-end 그리고 grid-column-end의 단축 속성
+혹은 grid-template-areas가 참조할 영역(Area) 이름을 설정할 수 있음
+영역 이름을 설정할 경우 grid-row와 grid-column 개념은 무시됨
+
+- grid-row-start / grid-column-start / grid-raw-end / grid-column-end
+
+```css
+.item {
+  grid-area: <grid-row-start> / <grid-column-start> / <grid-row-end> /
+    <grid-column-end>;
+  grid-area: 영역이름;
+}
+```
+
+### grid-template
+
+grid-template-rows, grid-template-columns 그리고 grid-template-areas의 단축 속성
+
+```css
+.container {
+  grid-template: <grid-template-rows> / <grid-template-columns>;
+  grid-template: <grid-template-areas>;
+}
+.container {
+  grid-template:
+    [1행시작선이름] 'AREAS' 행너비 [1행끝선이름]
+    [2행시작선이름] 'AREAS' 행너비 [2행끝선이름]
+    / <grid-template-columns>;
+}
+```
+
+[example]<br>
+![image](https://user-images.githubusercontent.com/54137044/103622646-583e1480-4f7a-11eb-8ace-dfc817d72c3b.png)
+
+### grid
+
+설명 : grid-template-xxx과 grid-auto-xxx의 단축 속성
+
+- 기본적으로 row를 작성하고 / 뒤에 columns 작성
+
+```css
+.container {
+  grid: <grid-template>;
+  grid: <grid-template-rows> / <grid-auto-flow> <grid-auto-columns>;
+  grid: <grid-auto-flow> <grid-auto-rows> / <grid-template-columns>;
+}
+```
+
+### align-content
+
+설명 : 그리드 콘텐츠(Contents)를 수직(열 축)정렬
+그리드 콘텐츠의세로 너비가 그리드 컨테이너(Container)보다 작아야 함
+
+| 값            | 의미                                                                  | 기본값 |
+| ------------- | --------------------------------------------------------------------- | ------ |
+| normal        | stretch와 같음                                                        | normal |
+| start         | 시작점(위쪽) 정렬                                                     |        |
+| center        | 수직 가운데 정렬                                                      |        |
+| end           | 끝점(아래쪽) 정렬                                                     |        |
+| space-around  | 각 행 위아래에 여백을 고르게 정렬                                     |        |
+| space-between | 첫 행은 시작점에, 끝 행은 끝점에 정렬되고 나머지 여백으로 고르게 정렬 |        |
+| space-evenly  | 모든 여백을 고르게 정렬                                               |        |
+| stretch       | 열 축을 채우기 위해 그리드 콘텐츠를 늘림                              |        |
+
+![image](https://user-images.githubusercontent.com/54137044/103623408-75271780-4f7b-11eb-9174-5d721de10928.png)
+
+### justify-content
+
+설명 : 그리드 콘텐츠(Contents)를 수평(행 축) 정렬
+그리드 콘텐츠의 가로 너비가 그리드 컨테이너(Container)보다 작아야 함
+
+| 값            | 의미                                                                  | 기본값 |
+| ------------- | --------------------------------------------------------------------- | ------ |
+| normal        | stretch와 같음                                                        | normal |
+| start         | 시작점(왼쪽) 정렬                                                     |        |
+| center        | 수평 가운데 정렬                                                      |        |
+| end           | 끝점(오른쪽) 정렬                                                     |        |
+| space-around  | 각 열 좌우에 여백을 고르게 정렬                                       |        |
+| space-between | 첫 열은 시작점에, 끝 열은 끝점에 정렬되고 나머지 여백으로 고르게 정렬 |        |
+| space-evenly  | 모든 여백을 고르게 정렬                                               |        |
+| stretch       | 행 축을 채우기 위해 그리드 콘텐츠를 늘림                              |        |
+
+### align-items
+
+설명 : 그리드 아이템(Items)들을 수직(열 축)정렬
+그리드 아이템의 세로 너비가 자신이 속한 그리드 행(Track) 크기 보다 작아야 함
+
+| 값      | 의미                                     | 기본값 |
+| ------- | ---------------------------------------- | ------ |
+| normal  | stretch와 동일                           | normal |
+| start   | 시작점(위쪽) 정렬                        |        |
+| center  | 수직 가운데 정렬                         |        |
+| end     | 끝점(아래쪽) 정렬                        |        |
+| stretch | 열 축을 채우기 위해 그리드 아이템을 늘림 |        |
+
+![image](https://user-images.githubusercontent.com/54137044/103624336-b79d2400-4f7c-11eb-8428-5bab6fa99fb9.png)
+
+### justify-items
+
+설명 : 그리드 아이템(Items)들을 수평(열 축)정렬
+그리드 아이템의 세로 너비가 자신이 속한 그리드 행(Track) 크기 보다 작아야 함
+
+| 값      | 의미                                     | 기본값 |
+| ------- | ---------------------------------------- | ------ |
+| normal  | stretch와 동일                           | normal |
+| start   | 시작점(위쪽) 정렬                        |        |
+| center  | 수평 가운데 정렬                         |        |
+| end     | 끝점(아래쪽) 정렬                        |        |
+| stretch | 행 축을 채우기 위해 그리드 아이템을 늘림 |        |
+
+![image](https://user-images.githubusercontent.com/54137044/103624454-e3b8a500-4f7c-11eb-8165-f0ed828e24bd.png)
+
+### align-self
+
+설명 : 단일 그리드 아이템을 수직(열 축) 정렬
+그리드 아이템의 세로 너비가 자신이 속한 그리드 행 크기보다 작아야 함
+
+|값| 의미| 기본값|
+|normal| stretch와 같습니다. |normal|
+|start| 시작점(위쪽) 정렬| |
+|center| 수직 가운데 정렬| |
+|end| 끝점(아래쪽) 정렬| |
+|stretch| 열 축을 채우기 위해 그리드 아이템을 늘림| |
+
+![image](https://user-images.githubusercontent.com/54137044/103624690-3abe7a00-4f7d-11eb-8e87-d213d011b142.png)
+
+### order
+
+설명 : 그리드 아이템이 자동배치되는 순서를 변경 가능
+
+- 숫자가 작을수록 앞서 배치
+
+```css
+.container {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+}
+.item:nth-child(1) {
+  order: 1;
+}
+.item:nth-child(3) {
+  order: 5;
+}
+.item:nth-child(5) {
+  order: -1;
+}
+```
+
+![image](https://user-images.githubusercontent.com/54137044/103624835-75281700-4f7d-11eb-9ea9-925de4d39414.png)
+
+### z-index
+
+설명 : z-index 속성을 이용하여 아이템이 쌓이는 순서를 변경 가능
+
+```css
+.item:nth-child(1) {
+  grid-area: 1 / 1 / 2 / 3;
+}
+.item:nth-child(2) {
+  grid-area: 1 / 2 / 3 / 3;
+  z-index: 1;
+}
+.item:nth-child(3) {
+  grid-area: 2 / 2 / 3 / 4;
+}
+```
+
+![image](https://user-images.githubusercontent.com/54137044/103624967-a6084c00-4f7d-11eb-9998-7478c308310e.png)
+
+## Grid Functions
+
+## 그리드에서 사용 하는 함수
+
+1. repeat
+   설명 : 행/열 크기 정의를 반복
+
+- '반복되는 횟수'와 행/열 크기를 인수로 사용
+- grid-template-rows와 grid-template-columns에서 사용
+
+```css
+/* 9컬럼 그리드 */
+.container {
+  grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 100px;
+}
+.container {
+  grid-template-columns: repeat(9, 100px);
+}
+```
+
+---
+
+2. minmax
+
+설명 : 행/열의 최소/최대 크기를 정의
+
+- 최솟값 최대값 인수를 활용
+  grid-template-rows, grid-template-columns, grid-auto-rows 그리고 grid-auto-columns에서 사용
+- 일반 요소에 min-width와 max-width 속성을 동시 지정하는 것과 유사
+
+```css
+.container {
+  grid-template-columns: minmax(100px, 1fr) minmax(200px, 1fr);
+}
+```
+
+## ![image](https://user-images.githubusercontent.com/54137044/103625695-ac4af800-4f7e-11eb-99a5-ca8c5b7df372.png)
+
+3. fit-content
+
+설명 : 행/열의 크기를 그리드 아이템이 포함하는 내용 크기에 맞춤
+
+- 내용의 최대 크기를 인수로 사용
+- minmax(auto, max-content)와 유사
+
+![image](https://user-images.githubusercontent.com/54137044/103625746-c258b880-4f7e-11eb-8246-b8c7efcd3600.png)
+
+## Grid Units
+
+---
+
+1. fr
+
+설명 : 사용 가능한 공간에 대한 비율 의미
+
+```css
+.container {
+  grid-template-columns: 1fr 2fr 100px 25%;
+}
+```
+
+![image](https://user-images.githubusercontent.com/54137044/103626619-cc2eeb80-4f7f-11eb-9e3c-342cb543139a.png)
+
+---
+
+2. min-content
+   설명 : 그리드 아이템이 포함하는 내용의 최소 크기를 의미
+
+```html
+<div class="container">
+  <div class="item">Hello HEROPY~</div>
+  <!-- ... -->
+</div>
+```
+
+```css
+.container {
+  grid-template-columns: min-content 1fr;
+}
+```
+
+![image](https://user-images.githubusercontent.com/54137044/103627078-76a70e80-4f80-11eb-8b06-d665701e4ffd.png)
+
+---
+
+3. max-content
+   설명 : 그리드 아이템이 포함하는 내용의 최대 크기를 의미
+
+```html
+<div class="container">
+  <div class="item">Hello HEROPY~</div>
+  <!-- ... -->
+</div>
+```
+
+```css
+.container {
+  grid-template-columns: max-content 1fr;
+}
+```
+
+![image](https://user-images.githubusercontent.com/54137044/103627217-a7874380-4f80-11eb-9712-bd62f065e027.png)
+
+### auto-fill auto-fit
+
+행과 열의 개수를 그리드 컨테이너(Container) 및 행/열 크기에 맞게 자동으로 조정
+repeat()함수와 같이
+
+### Grid Container Properties
+
+| 속성                        | 의미                                            |
+| --------------------------- | ----------------------------------------------- |
+| display                     | 그리드 컨테이너(Container)를 정의               |
+| grid-template-rows          | 명시적 행(Track)의 크기를 정의                  |
+| grid-template-columns       | 명시적 열(Track)의 크기를 정의                  |
+| grid-template-areas         | 영역(Area) 이름을 참조해 템플릿 생성            |
+| grid-template               | grid-template-xxx의 단축 속성                   |
+| row-gap(grid-row-gap)       | 행과 행 사이의 간격(Line)을 정의                |
+| column-gap(grid-column-gap) | 열과 열 사이의 간격(Line)을 정의                |
+| gap(grid-gap)               | xxx-gap의 단축 속성                             |
+| grid-auto-rows              | 암시적인 행(Track)의 크기를 정의                |
+| grid-auto-columns           | 암시적인 열(Track)의 크기를 정의                |
+| grid-auto-flow              | 자동 배치 알고리즘 방식을 정의                  |
+| grid                        | grid-template-xxx과 grid-auto-xxx의 단축 속성   |
+| align-content               | 그리드 콘텐츠(Grid Contents)를 수직(열 축) 정렬 |
+| justify-content             | 그리드 콘텐츠를 수평(행 축) 정렬                |
+| place-content               | align-content와 justify-content의 단축 속성     |
+| align-items                 | 그리드 아이템(Items)들을 수직(열 축) 정렬       |
+| justify-items               | 그리드 아이템들을 수평(행 축) 정렬              |
+| place-items                 | align-items와 justify-items의 단축 속성         |
